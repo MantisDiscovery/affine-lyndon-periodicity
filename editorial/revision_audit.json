@@ -1,0 +1,11 @@
+{
+  "original_labels": 131,
+  "retained_original_labels": 131,
+  "new_labels": 12,
+  "original_labeled_statements": 43,
+  "changed_original_labeled_statements": [
+    "thm:main"
+  ],
+  "preserved_classical_code_files": 24,
+  "scope": "The main theorem is deliberately strengthened to all untwisted types using prior exceptional results. This is a content preservation audit, not proof verification."
+}

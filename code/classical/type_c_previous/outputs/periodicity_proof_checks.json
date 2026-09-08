@@ -1,0 +1,54 @@
+{
+  "scope": "Finite exact checks; not the all-rank proof",
+  "ranks": [
+    {
+      "n": 2,
+      "orders": 2,
+      "exchange_implications": 2,
+      "target_brackets": 2,
+      "bracket_cases": {
+        "Q<P": 2
+      }
+    },
+    {
+      "n": 3,
+      "orders": 12,
+      "exchange_implications": 26,
+      "target_brackets": 24,
+      "bracket_cases": {
+        "Q<P": 22,
+        "P<V<Q": 2
+      }
+    },
+    {
+      "n": 4,
+      "orders": 72,
+      "exchange_implications": 310,
+      "target_brackets": 216,
+      "bracket_cases": {
+        "Q<P": 194,
+        "P<V<Q": 22
+      }
+    },
+    {
+      "n": 5,
+      "orders": 480,
+      "exchange_implications": 3702,
+      "target_brackets": 1920,
+      "bracket_cases": {
+        "Q<P": 1716,
+        "P<V<Q": 204
+      }
+    },
+    {
+      "n": 6,
+      "orders": 3600,
+      "exchange_implications": 45660,
+      "target_brackets": 18000,
+      "bracket_cases": {
+        "Q<P": 16092,
+        "P<V<Q": 1908
+      }
+    }
+  ]
+}

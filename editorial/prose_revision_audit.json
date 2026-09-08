@@ -1,0 +1,29 @@
+{
+  "main": {
+    "edited_source_lines": 296,
+    "formal_statements_count": 50,
+    "formal_statements_verbatim": true,
+    "displays_and_tables_count": 174,
+    "displays_and_tables_verbatim": true,
+    "labels_unchanged": true,
+    "removed_ref_targets": {},
+    "added_ref_targets": {},
+    "bibliography_verbatim": true,
+    "author_contributions_and_declarations_verbatim": true
+  },
+  "twisted": {
+    "edited_source_lines": 63,
+    "formal_statements_count": 13,
+    "formal_statements_verbatim": true,
+    "displays_and_tables_count": 25,
+    "displays_and_tables_verbatim": true,
+    "labels_unchanged": true,
+    "removed_ref_targets": {},
+    "added_ref_targets": {},
+    "bibliography_verbatim": true,
+    "author_contributions_and_declarations_verbatim": true
+  },
+  "scope": "Editorial revision of the existing main manuscript and companion. Formal statements, displayed equations and tables, labels, reference targets, bibliography, authorship, and declarations are preserved. These checks do not constitute a new mathematical verification.",
+  "supplementary_files_verified_byte_identical": 44,
+  "new_computational_runs": 0
+}

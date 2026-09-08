@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imaginary standard Lyndon periodicity in untwisted affine types</title>
+  <meta name="description" content="An interactive companion to the fixed insertion formula for imaginary standard Lyndon words in every untwisted affine type and every alphabet order.">
+  <meta name="author" content="Pranava Kumar, Abhijay Gangarapu">
+  <link rel="canonical" href="https://mantisdiscovery.github.io/affine-lyndon-periodicity/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Imaginary standard Lyndon periodicity in untwisted affine types">
+  <meta property="og:description" content="Fixed insertion formulas, exact preperiods, finite block alphabets, and the boundary between the untwisted theorem and the twisted conjecture.">
+  <meta property="og:url" content="https://mantisdiscovery.github.io/affine-lyndon-periodicity/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Imaginary standard Lyndon periodicity">
+  <meta name="twitter:description" content="An interactive companion to the paper by Pranava Kumar and Abhijay Gangarapu.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%222%22 fill=%22%2316181d%22/><path d=%22M3 4h3v8H3M8 4h2v8H8M12 4h1v8h-1%22 fill=%22none%22 stroke=%22%237aa5f5%22 stroke-width=%221.4%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260907a">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['\\[', '\\]']],
+        macros: {
+          SL: '\\operatorname{SL}',
+          Lyndon: '\\operatorname{SL}',
+          Pr: '\\operatorname{Pr}'
+        }
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <a class="mark" href="#top">Affine Lyndon periodicity</a>
+    <nav aria-label="Page sections">
+      <a href="#explore">Explore</a>
+      <a href="#abstract">Abstract</a>
+      <a href="#entry">Definitions</a>
+      <a href="#theorem">Theorem</a>
+      <a href="#blocks">Blocks</a>
+      <a href="#phase">Phase</a>
+      <a href="#twisted">Twisted types</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#limits">Limits</a>
+    </nav>
+    <button class="themetoggle" type="button" aria-label="Toggle colour theme" aria-pressed="false">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg>
+    </button>
+  </div>
+
+  <main id="main">
+    <header class="hero" id="top">
+      <div class="hero-inner">
+        <h1><em>Imaginary standard Lyndon periodicity</em> in untwisted affine types</h1>
+        <p class="authors">Pranava Kumar, Abhijay Gangarapu</p>
+        <nav class="links" aria-label="Paper resources">
+          <a class="pill" href="manuscript/lyndon_untwisted_revised.pdf">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 3v5h5M6 3h8l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>
+            Paper</a>
+          <a class="pill ghost" href="extensions/affine_blocks_twisted_note.pdf">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 4h10M7 8h10M7 12h7M7 16h8"/><rect x="4" y="2" width="16" height="20" rx="2"/></svg>
+            Companion note</a>
+          <a class="pill ghost" href="manuscript/lyndon_untwisted_revised.tex">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 6L4 12l5 6M15 6l5 6-5 6"/></svg>
+            Manuscript source</a>
+          <a class="pill ghost" href="https://github.com/MantisDiscovery/affine-lyndon-periodicity/tree/main/code">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg>
+            Calculations</a>
+          <a class="pill ghost" href="https://github.com/MantisDiscovery/affine-lyndon-periodicity">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 19c-4 1.4-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+            GitHub</a>
+          <a class="pill ghost" href="#citation">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 8h10M7 12h10M7 16h6"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+            BibTeX</a>
+        </nav>
+        <p class="heronote">Editorial revision, September 2026 &nbsp;·&nbsp; MSC 2020: 17B67, 17B22, 05E10</p>
+      </div>
+    </header>
+
+    <section id="explore" class="first-section">
+      <div class="page">
+        <figure class="breakout reveal word-figure">
+          <div class="fighead">
+            <h2>Figure 1 · The insertion formula, letter by letter</h2>
+            <span class="hint">exact words produced by the supplementary classical constructor</span>
+          </div>
+          <div class="toolbar">
+            <label>example
+              <select id="word-example">
+                <option value="C3">C₃⁽¹⁾ · order 1&lt;3&lt;0&lt;2</option>
+                <option value="D4">D₄⁽¹⁾ · order 2&lt;0&lt;1&lt;3&lt;4</option>
+              </select>
+            </label>
+            <label>imaginary index <select id="word-index"></select></label>
+            <div class="range-field">
+              <label for="word-degree">degree <i>kδ</i></label>
+              <input id="word-degree" type="range" min="1" max="6" value="2">
+              <output id="word-degree-value">k = 2</output>
+            </div>
+            <button class="btn primary" id="play-degree" type="button">Play degrees</button>
+          </div>
+          <div class="word-stage" id="word-stage" aria-live="polite"></div>
+          <dl class="factor-readout">
+            <div><dt>initial prefix $L_i$</dt><dd id="factor-left">—</dd></div>
+            <div><dt>inserted period $W_i$</dt><dd id="factor-period">—</dd></div>
+            <div><dt>final suffix $R_i$</dt><dd id="factor-right">—</dd></div>
+            <div><dt>period parent</dt><dd id="factor-parent">—</dd></div>
+          </dl>
+          <figcaption><b>The word grows only by insertion.</b> For each displayed family, $\SL_i(k\delta)=L_iW_i^{k-1}R_i$. Blue letters form the fixed initial prefix, graphite groups are copies of the period, and green letters form the final suffix. The two degree-$2\delta$ lists were also reproduced by a separate exact Lyndon-bracket checker.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="page">
+      <section id="abstract" class="reveal">
+        <p class="kicker">Abstract</p>
+        <h2>A fixed insertion law in every untwisted type</h2>
+        <p>We prove that imaginary standard Lyndon words satisfy a fixed insertion formula in every untwisted affine type and every alphabet order, by establishing the remaining classical cases uniformly in the rank and combining them with the exceptional-type verification of Elkins and Tsymbaliuk. A type-independent phase argument identifies the exact increasing-chain preperiod with the initial standard prefix followed by a proper suffix of the period's Lyndon parent. This gives the bound $2|\delta|-2$ for its length and recovers the increasing positive system and its Dynkin parent tree from the two lowest imaginary degrees.</p>
+        <p>The classical argument represents real blocks as greatest extensions of chain or fork ideals. A first-endpoint comparison and a reflected raising lemma determine the word in degree $2\delta$, after which an existing propagation theorem gives every degree. We also give polynomial preprocessing in every untwisted type, with a sharper classical bound, and determine the primitive column lattices and zero-weight switch bounds in the classical models.</p>
+      </section>
+
+      <hr class="rule">
+
+      <section id="entry" class="reveal">
+        <p class="kicker">Definitions</p>
+        <h2>Words that remember a basis position</h2>
+        <p>Order the simple roots of an affine Lie algebra. A Lyndon word is a nonempty word smaller than each of its nonempty proper suffixes in the resulting lexicographic order. The standard Lyndon construction assigns selected words to positive root spaces and obtains a basis by recursive Lie brackets.</p>
+        <p>Real root spaces are one-dimensional, so a real root has one standard word. The imaginary root $k\delta$ has multiplicity equal to the finite rank $n$ in the untwisted case. We therefore list its words in decreasing order,</p>
+        <div class="display">\[ \SL_1(k\delta)&gt;\cdots&gt;\SL_n(k\delta). \]</div>
+        <p>The index records a position in a Cartan flag as well as the degree. Controlling that position is what turns periodicity of real-root chains into the insertion formula of the main theorem.</p>
+
+        <dl class="glossary">
+          <div><dt>alphabet order</dt><dd>the chosen total order on the simple-root labels; every theorem on this page allows any such order</dd></div>
+          <div><dt>standard factorization</dt><dd>$w=L_iR_i$, cut after the longest proper Lyndon prefix</dd></div>
+          <div><dt>period</dt><dd>the fixed word $W_i$ inserted once whenever the imaginary degree increases by $\delta$</dd></div>
+          <div><dt>preperiod</dt><dd>the finite real prefix seen before an increasing real-root chain enters its repeating imaginary pattern</dd></div>
+        </dl>
+      </section>
+
+      <hr class="rule">
+
+      <section id="theorem" class="reveal">
+        <p class="kicker">Main result</p>
+        <h2>Untwisted affine types</h2>
+        <p>Fix any untwisted affine type of finite rank $n$, any order on its simple-root alphabet, and $1\leq i\leq n$. Write $\SL_i(\delta)=L_iR_i$ as a standard factorization.</p>
+
+        <div class="thm">
+          <span class="tname">Theorem 1.1 · Imaginary insertion</span>
+          There is a cyclic permutation $W_i$ of $\SL_j(\delta)$ for some $j\leq i$ such that, for every $k\geq1$,
+          <div class="display">\[ \SL_i(k\delta)=L_iW_i^{k-1}R_i,\qquad \SL_i^{\mathrm{ls}}(k\delta)=L_iW_i^{k-1}. \]</div>
+          The theorem holds for every untwisted type and every alphabet order.
+        </div>
+
+        <p>The new all-rank arguments handle the remaining classical types $B$, $C$, and $D$. The exceptional cases use the prior degree-$2\delta$ computations and propagation theorem of Elkins and Tsymbaliuk; this paper does not replace those computations with a new type-independent exceptional proof.</p>
+
+        <div class="thm alt">
+          <span class="tname">Corollary · Reconstruction from two degrees</span>
+          For a fixed untwisted affine root datum, the words in degrees $\delta$ and $2\delta$ determine the positive system of increasing real-root chains. They recover the finite Dynkin diagram, including bond multiplicities and orientations.
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="blocks" class="reveal">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Classical reduction</p>
+            <h2>The finite type-C block grid</h2>
+          </div>
+          <div class="toolbar compact">
+            <label>rank $n$ <select id="grid-rank"><option>3</option><option selected>4</option><option>5</option><option>6</option></select></label>
+            <label>least letter $r$ <select id="grid-cut"></select></label>
+            <label>remaining order <select id="grid-order"><option value="ascending">ascending</option><option value="descending">descending</option></select></label>
+          </div>
+        </div>
+        <p>When the least letter $r$ has Kac mark two, every degree-$k\delta$ word splits uniquely into $2k$ real blocks. In type $C_n^{(1)}$, the possible block degrees form a $2r$ by $2(n-r)$ rectangle. The grid contains all $4r(n-r)$ positive real roots whose $\alpha_r$-coefficient is one.</p>
+
+        <figure class="breakout reveal grid-figure">
+          <div class="grid-layout">
+            <div>
+              <div class="block-grid" id="block-grid" role="group" aria-label="Type C block-degree grid"></div>
+              <p class="grid-axis">$q$ runs across; $p$ runs down. Select any cell.</p>
+            </div>
+            <div class="grid-readout" aria-live="polite">
+              <p><b id="grid-cell">$d_{0,0}$</b> has finite projection <span id="grid-weight">—</span>.</p>
+              <p>Its complementary root is <b id="grid-complement">—</b>, reflected through the centre because $\delta-d_{p,q}=d_{H-p,J-q}$.</p>
+              <p>For the displayed alphabet order, its real standard word is</p>
+              <div class="word-inline" id="grid-word">—</div>
+            </div>
+          </div>
+          <figcaption><b>Each square is a real block degree.</b> Blue marks the selected root and green marks its complement. The word is the lexicographically greatest shuffle of the two arm prefixes, computed by taking the greater available head.</figcaption>
+        </figure>
+      </section>
+
+      <hr class="rule">
+
+      <section id="phase" class="reveal">
+        <p class="kicker">Exact phase</p>
+        <h2>The period rotates; the preperiod records the cut</h2>
+        <p>Let $B_i$ be the unique Lyndon rotation of $W_i$. There is a unique split $B_i=A_iC_i$ for which $W_i=C_iA_i$, with $0\leq|C_i|&lt;|\delta|$. The increasing-chain preperiod is then $y_i=L_iC_i$, and the real appends are the canonical Lyndon factors of $C_i$.</p>
+
+        <figure class="breakout reveal phase-figure">
+          <div class="fighead">
+            <h2>Figure 3 · Finding the unique rotation cut</h2>
+            <span class="hint">the displayed family is $C_3^{(1)}$, order $1&lt;3&lt;0&lt;2$, index $i=3$</span>
+          </div>
+          <div class="phase-control">
+            <label for="phase-cut">candidate suffix length $|C|$</label>
+            <input id="phase-cut" type="range" min="0" max="5" value="3">
+            <output id="phase-cut-value">3</output>
+          </div>
+          <div class="phase-rows">
+            <div><span class="phase-label">parent $B=A\,C$</span><div class="phase-word" id="phase-parent"></div></div>
+            <div><span class="phase-label">rotation $C\,A$</span><div class="phase-word" id="phase-rotation"></div></div>
+            <div><span class="phase-label">period $W$</span><div class="phase-word" id="phase-target"></div></div>
+            <div><span class="phase-label">preperiod $y=L\,C$</span><div class="phase-word" id="phase-preperiod"></div></div>
+          </div>
+          <p class="phase-verdict" id="phase-verdict" aria-live="polite"></p>
+          <figcaption>Here $B=123120$, $W=120123$, and the unique cut has $C=120$. Thus $y=L C=10123120$, with $L=10123$. Moving the control compares every possible cyclic cut without changing the theorem's selected period.</figcaption>
+        </figure>
+
+        <div class="thm">
+          <span class="tname">Theorem 13.3 · Exact phase and preperiod</span>
+          For every untwisted type, $y_i=L_iC_i$ and $|y_i|\leq2|\delta|-2$. The repeating pattern begins at degree $\delta$ exactly when $C_i$ is empty, and at degree $2\delta$ otherwise.
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="twisted" class="reveal">
+        <p class="kicker">Companion note</p>
+        <h2>What extends to twisted types</h2>
+        <p>The finite block alphabet and primitive-bracketing results hold for every indecomposable symmetrizable affine root system. Twisted imaginary multiplicities can vary with the degree, so four families cannot use the unchanged degree-$\delta$ indexing of the untwisted theorem.</p>
+
+        <div class="thm">
+          <span class="tname">Proved in $A_2^{(2)}$</span>
+          With $\delta=\alpha_0+2\alpha_1$, the all-degree formulas for the two alphabet orders are
+          <div class="display">\[ 0&lt;1:\quad \SL(k\delta)=01(011)^{k-1}1, \]</div>
+          <div class="display">\[ 1&lt;0:\quad \SL(k\delta)=1(110)^{k-1}10. \]</div>
+        </div>
+
+        <div class="scope-split">
+          <div><h3>Established</h3><p>Finite block alphabets, a nonzero bracketing for primitive zero-weight configurations, the twisted multiplicity obstruction, and the complete $A_2^{(2)}$ formula.</p></div>
+          <div><h3>Conjectural</h3><p>The divisibility-stratified insertion formula in the remaining twisted families. The recorded finite checks support it but do not prove propagation.</p></div>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="evidence" class="reveal">
+        <p class="kicker">Supplementary calculations</p>
+        <h2>Recorded finite checks</h2>
+        <p>The supplied programs construct homogeneous Lie spaces with exact integer or rational arithmetic and select actual costandard brackets before fitting insertion patterns. The main all-rank classical proofs do not depend on these computations.</p>
+
+        <div class="evidence-strip">
+          <div><strong>77</strong><span>twisted type/order cases</span></div>
+          <div><strong>214</strong><span>fitted twisted families</span></div>
+          <div><strong>129</strong><span>untwisted phase cases</span></div>
+          <div><strong>513</strong><span>imaginary-index comparisons</span></div>
+          <div><strong>21,952</strong><span>D₄ Jacobi identities</span></div>
+        </div>
+
+        <p>The present page reran two bounded examples: the four $D_4^{(1)}$ words and three $C_3^{(1)}$ words in degree $2\delta$ agreed between the classical constructor and the separate exact checker; both $A_2^{(2)}$ orders were enumerated through degree $6\delta$.</p>
+
+        <div class="tablewrap" tabindex="0">
+          <table>
+            <thead><tr><th>Path</th><th>Contents</th></tr></thead>
+            <tbody>
+              <tr><td><code>manuscript/</code></td><td>33-page main paper and complete LaTeX source</td></tr>
+              <tr><td><code>extensions/</code></td><td>8-page companion note on general affine blocks and twisted types</td></tr>
+              <tr><td><code>code/classical/</code></td><td>all-rank classical constructors, independent exact checks, and recorded outputs</td></tr>
+              <tr><td><code>code/general/</code></td><td>twisted, folded, triality, model, and phase checks</td></tr>
+              <tr><td><code>SHA256SUMS</code></td><td>hash manifest for the supplied 55-file editorial package</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section id="limits" class="reveal">
+        <p class="kicker">Scope</p>
+        <h2>What the package does not claim</h2>
+        <p>The main theorem covers every untwisted affine type. Its exceptional cases use cited prior computer-assisted verifications. A type-independent analytic replacement for those exceptional computations is not supplied.</p>
+        <p>The companion note proves the full insertion formula only for $A_2^{(2)}$ among twisted types. The proposed formulas for the other twisted families remain conjectural; finite calculations establish neither lexicographic maximality in every later flag layer nor the required propagation law.</p>
+        <p>The package also makes no quantum or shuffle-algebra analogue, categorification, canonical-basis statement, or full Gröbner-Shirshov presentation. The new arguments require coauthor review before submission, and no external submission or referee approval is recorded.</p>
+      </section>
+
+      <hr class="rule">
+
+      <section id="citation" class="reveal">
+        <h2>Citation</h2>
+        <pre id="bibtex" tabindex="0"><code>@misc{kumar2026lyndon,
+  title  = {Imaginary standard Lyndon periodicity in untwisted affine types},
+  author = {Kumar, Pranava and Gangarapu, Abhijay},
+  year   = {2026}
+}</code></pre>
+        <button class="btn" id="copybib" type="button">Copy BibTeX</button>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="page frow">
+      <span>Pranava Kumar · Abhijay Gangarapu</span>
+      <span><a href="manuscript/lyndon_untwisted_revised.pdf">paper</a> · <a href="extensions/affine_blocks_twisted_note.pdf">companion</a> · <a href="https://github.com/MantisDiscovery/affine-lyndon-periodicity">source</a></span>
+    </div>
+  </footer>
+
+  <script src="assets/js/lyndon.js?v=20260907a"></script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,mathtools,booktabs,microtype,needspace}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\ad}{ad}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\g}{\mathfrak g}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\br}[1]{b(#1)}
+\newcommand{\ls}{\mathrm{ls}}
+\setlength{\emergencystretch}{2em}
+\title[Affine blocks and twisted imaginary words]{Finite affine block alphabets\ and twisted imaginary Lyndon words}
+\author{Pranava Kumar}
+\author{Abhijay Gangarapu}
+\author{Manolis Kellis}
+\address[Pranava Kumar and Manolis Kellis]{Massachusetts Institute of Technology, Cambridge, Massachusetts 02139, USA}
+\email[Pranava Kumar]{pranavak@mit.edu}
+\date{}
+\subjclass[2020]{17B67,17B22,05E10}
+\keywords{Affine Lie algebra, standard Lyndon word, twisted loop algebra, Kac mark}
+\hypersetup{pdftitle={Finite affine block alphabets and twisted imaginary Lyndon words},pdfauthor={Pranava Kumar, Abhijay Gangarapu, Manolis Kellis}}
+\begin{document}
+\begin{abstract}
+We study the finite-block reduction for affine standard Lyndon words at arbitrary Kac marks, including twisted affine types. Cutting at the least letter gives a finite alphabet, consisting entirely of real blocks when the mark is at least two, and every primitive zero-weight configuration of positive real roots admits a nonzero bracketing with real degrees at all proper internal nodes. This applies to degree-$\delta$ block configurations at every mark; in the untwisted case, the block weights form the degree-one part of a cyclic grading. In twisted types, diagram-orbit lengths determine the imaginary multiplicities and prevent the unchanged degree-$\delta$ indexing in four families. We prove an all-degree insertion formula for both orders in $A_2^{(2)}$ using commutativity of the Cartan spaces, and formulate a divisibility-stratified conjecture for the remaining families, supported by finite exact checks.
+\end{abstract}
+\maketitle
+
+\section{Scope and conventions}
+
+Elkins and Tsymbaliuk's insertion conjecture concerns untwisted affine Lie algebras \cite[Conjecture~6.26]{ET}, where all positive imaginary root spaces have the same dimension. Their standard Lyndon words can therefore be indexed uniformly in the degree. For twisted types the dimension can vary. The finite-alphabet reduction still applies, but the indexing and propagation of imaginary words must account for this variation.
+
+The finite-block and nonzero-bracketing arguments in Sections~\ref{sec:finite}--\ref{sec:circuits} hold for every indecomposable symmetrizable affine generalized Cartan matrix. In the untwisted case we identify the higher-mark blocks with a cyclic-grading component in Section~\ref{sec:grading}. The twisted multiplicity calculation and the rank-one insertion proof are given in Sections~\ref{sec:twisted}--\ref{sec:rankone}. The stronger statement suggested by the computations is formulated separately as a conjecture and is not used in these proofs.
+
+We work in characteristic zero. Let
+\[
+ Q=\bigoplus_{j\in\widehat I}\Z\alpha_j,
+ \qquad \delta=\sum_{j\in\widehat I}a_j\alpha_j
+\]
+be the affine root lattice and its primitive positive null root. The Kac marks $a_j$ are positive and have greatest common divisor one. Put $h=\sum_j a_j$ and $\overline Q=Q/\Z\delta$. The invariant symmetric form descends to a positive-definite form on $\overline Q\otimes\R$, with the conventions of \cite[Chapters~5--8]{Kac}.
+
+Choose an order on the simple-root alphabet, using lexicographic order with a proper prefix smaller than its extension. A word is Lyndon if it is smaller than every nonempty proper suffix. We define $\br{w}$ recursively by the \emph{costandard factorization}, which uses the longest proper Lyndon suffix. The \emph{standard factorization} $w=w^{\ls}w^{\mathrm{rs}}$ instead uses the longest proper Lyndon prefix.
+
+A Lyndon word is standard in its degree when its bracket is not spanned by brackets of greater Lyndon words. The Lalonde--Ram construction gives a basis closed under Lyndon factors \cite{LR}, in the positive part of a twisted affine algebra as well as in the untwisted case.
+
+\section{Finite blocks for every affine type}\label{sec:finite}
+
+Let $r$ be the least letter and $m=a_r$ its mark. An \emph{$r$-block} is a word $rA$ with no $r$ in $A$, and is automatically Lyndon. The coefficient-one condition confines the possible block degrees to a finite section of the affine root system.
+
+\begin{theorem}\label{thm:all-blocks}
+For every affine type, twisted or untwisted, and every alphabet order, the set
+\[
+ \Gamma_r=\{\beta\in\widehat\Phi^+:[\beta:\alpha_r]=1\}
+\]
+is finite. Every standard Lyndon word of degree $k\delta$ has a unique factorization into $km$ standard $r$-blocks with degrees in $\Gamma_r$.
+
+If $m\geq2$, every block is real and there is at most one block of each degree. If $m=1$, the only possible imaginary block degree is $\delta$; its standard words must be retained individually when that root has multiplicity greater than one.
+\end{theorem}
+\begin{proof}
+A Lyndon word containing $r$ starts with $r$. Cut before every later occurrence to obtain $km$ blocks with uniquely determined boundaries. Each block is Lyndon, since its initial letter is its only $r$, and is standard by factor closure. Its degree is thus a positive root with $r$-coefficient one.
+
+For finiteness, consider first the real roots. Their squared lengths are among the simple-root squared lengths by Weyl invariance, so their images in the positive-definite lattice $\overline Q$ lie in a bounded set. Only finitely many lattice points occur. Two lifts of the same point differ by $q\delta$ for an integer $q$, and equality of their $r$-coefficients gives $qm=0$. Thus at most one lift lies in $\Gamma_r$.
+
+An imaginary root $k\delta$, with $k\geq1$, has $r$-coefficient $km$ and lies in $\Gamma_r$ precisely when $k=m=1$. Its root space is finite-dimensional, whereas each real root space is one-dimensional, giving the stated alternatives for the block words.
+\end{proof}
+
+\begin{lemma}\label{lem:block-substitution}
+Order any collection of distinct $r$-blocks by their expanded words. Concatenation is an injective order embedding from words in this block alphabet to words in the simple-root alphabet. It preserves and reflects the Lyndon condition. For a Lyndon word with at least two blocks, it also preserves the costandard factorization and its evaluated bracket.
+\end{lemma}
+\begin{proof}
+The occurrences of $r$ recover all boundaries. Compare the first unequal blocks. An internal difference decides the word order immediately. If one block is a proper prefix of the other, the shorter side either ends or begins its next block with $r$, while the longer side continues with a greater letter. Thus the block comparison is preserved even in the presence of arbitrary tails.
+
+A suffix starting inside a block begins above $r$, so only aligned suffixes can violate the Lyndon condition, and their comparisons are preserved. With at least two blocks, the last complete block is a proper Lyndon suffix. A longer suffix starting inside an earlier block contains a later $r$ and cannot be Lyndon, so the longest proper Lyndon suffix is aligned. Induction now gives compatibility of the evaluated brackets.
+\end{proof}
+
+The longest proper Lyndon prefix, in contrast, may end inside a block. Thus the standard factorization need not be aligned, at any Kac mark.
+
+\begin{proposition}\label{prop:path-recursion}
+Suppose that $m\geq2$. For $\beta\in\Gamma_r$, put $X_\beta=\SL(\beta)$. Then $X_{\alpha_r}=r$, and for every other $\beta\in\Gamma_r$,
+\begin{equation}\label{eq:root-path}
+ X_\beta=\max_{\substack{j\ne r\\\beta-\alpha_j\in\Gamma_r}}
+                 X_{\beta-\alpha_j}j.
+\end{equation}
+In particular, all possible real blocks are computed by an acyclic finite root graph, without an arm or grid model.
+\end{proposition}
+\begin{proof}
+Remove the final letter of $X_\beta$. The remaining prefix has a unique initial $r$ and is Lyndon and standard, hence real by Theorem~\ref{thm:all-blocks}. It gives one of the indicated predecessors.
+
+Conversely, when $\beta-\alpha_j$ and $\beta$ are real, the root-string action gives a nonzero bracket between the predecessor root space and the simple generator of degree $\alpha_j$. Its standard word begins with $r<j$, so the standard-word recursion admits the concatenation with $j$. Taking the greatest candidate proves \eqref{eq:root-path}. Each edge raises height by one, so the graph is acyclic.
+\end{proof}
+
+The root string keeps $r$-coefficient one, and therefore meets no imaginary root when $m\geq2$. We have used only the usual integrable $\mathfrak{sl}_2$ root-string statement and the standard-basis recursion: costandard factors of selected words are selected, and the admitted concatenations include every possible selected word. No condition on untwisted imaginary multiplicities is needed.
+
+\section{Zero-weight configurations and nonzero brackets}\label{sec:circuits}
+
+A multiset of roots has \emph{zero weight} when the sum of its images in $\overline Q$ is zero. We retain the affine roots and their degrees, rather than identifying roots that differ by a null-root shift.
+
+\begin{proposition}\label{prop:all-zero-weight}
+A multiset of $km$ roots in $\Gamma_r$ has total degree $k\delta$ if and only if it has zero weight. More generally, the cardinality of any nonempty zero-weight multiset from $\Gamma_r$ is divisible by $m$.
+\end{proposition}
+\begin{proof}
+A nonempty zero-weight sum is positive and lies in $\Z\delta$, so it is $q\delta$ for an integer $q\geq1$. Comparing $r$-coefficients gives cardinality $qm$. The converse is immediate from the quotient definition.
+\end{proof}
+
+Call a nonempty zero-weight multiset \emph{primitive} if no nonempty proper submultiset has zero weight. Primitivity gives a nonzero bracketing without reference to either the affine type or an alphabet order.
+
+\begin{theorem}\label{thm:primitive-bracket}
+Let $\beta_1,\ldots,\beta_N$ be positive real affine roots forming a primitive zero-weight multiset. For arbitrary nonzero vectors $x_j\in\widehat\g_{\beta_j}$, there is a permutation and a full binary bracketing of the $x_j$ whose value is nonzero. Every proper internal node of this bracketing has a real root degree. The final degree is the positive imaginary root $\sum_j\beta_j$.
+\end{theorem}
+\begin{proof}
+We construct the bracketing by merging pairs. Every image $\overline\beta_j$ has positive squared length because $\beta_j$ is real, while zero total weight gives
+\[
+ 0=\left\|\sum_j\overline\beta_j\right\|^2
+   =\sum_j\|\overline\beta_j\|^2
+        +2\sum_{i<j}(\overline\beta_i,\overline\beta_j).
+\]
+Hence some pair has negative inner product. The raising operator of the real-root $\mathfrak{sl}_2$ for $\beta_i$ is injective on a negative-weight space in an integrable module. Applying this to $x_j$ in the adjoint module gives
+\[
+ [x_i,x_j]\ne0,
+ \qquad \beta_i+\beta_j\in\widehat\Phi^+.
+\]
+For $N>2$, primitivity excludes zero as the sum of these two quotient weights. Their root sum is therefore real, since affine imaginary roots have zero image in $\overline Q$.
+
+Replace the pair by its root sum and the two vectors by their nonzero bracket. The resulting multiset is again primitive: a proper zero-weight submultiset would expand to one in the original list. We can thus repeat the operation until two roots remain. Their quotient weights are opposite, so the same negative-inner-product argument gives a nonzero final bracket in the imaginary degree. The successive mergers give the required binary tree, with real degrees at every earlier internal node.
+\end{proof}
+
+\begin{corollary}\label{cor:degree-one-bracket}
+Suppose that $m\geq2$. Every multiset of $m$ least-letter block degrees summing to $\delta$ admits a nonzero bracketing of its block root vectors, with real degrees at every proper internal node.
+\end{corollary}
+\begin{proof}
+The blocks are real by Theorem~\ref{thm:all-blocks}. A proper nonempty zero-weight submultiset would have cardinality divisible by $m$, by Proposition~\ref{prop:all-zero-weight}, and strictly between zero and $m$. Thus the configuration is primitive and Theorem~\ref{thm:primitive-bracket} applies.
+\end{proof}
+
+\begin{corollary}\label{cor:nonzero-lyndon-order}
+Every primitive zero-weight configuration of real blocks has a Lyndon ordering whose costandard bracket is nonzero. In particular, this holds for every configuration of $m$ blocks summing to $\delta$ when $m\geq2$.
+\end{corollary}
+\begin{proof}
+Regard the distinct blocks as free Lie generators. The bracketing in Theorem~\ref{thm:primitive-bracket} comes from the multihomogeneous component with the prescribed multiplicities. Expand it in the free Lyndon basis of that component. Since its image is nonzero, at least one basis bracket has nonzero image. Lemma~\ref{lem:block-substitution} identifies this image with the costandard bracket of the expanded Lyndon word.
+\end{proof}
+
+For more than two blocks in degree $\delta$, these corollaries replace opposite-root nonvanishing by a primitive-configuration argument. They give some nonzero bracketing and some nonzero Lyndon ordering, not nonvanishing of every ordering. Identifying the greatest surviving word in each Cartan-flag layer still requires an order comparison.
+
+The primitive configurations also give a finite replacement for the classical list of antipodal pairs. In a fixed real block alphabet of size $N$, represent a multiset by a vector in $\Z_{\geq0}^N$. Primitive zero-weight vectors form an antichain: any smaller nonzero zero-weight vector would be a proper submultiset. Such an antichain is finite, since an infinite sequence in $\Z_{\geq0}^N$ has an infinite subsequence nondecreasing in each coordinate, obtained by successive extraction.
+
+Thus only finitely many primitive configurations occur, and every zero-weight multiset is a disjoint union of them by repeated extraction. Theorem~\ref{thm:primitive-bracket} gives a nonzero bracketing for each primitive part. It need not give one for their union, since the brackets of different imaginary parts can vanish.
+
+\section{The cyclic grading at an arbitrary untwisted mark}\label{sec:grading}
+
+For the untwisted case, suppose that $m=a_r\geq2$, so $r\ne0$. Write $c_r(\gamma)$ for the coefficient of a finite root $\gamma$ at $\alpha_r$, and fix a primitive $m$th root of unity $\zeta$. The coefficient grading is defined by the automorphism
+\[
+ \tau_r|_\h=1,\qquad
+ \tau_r(x_\gamma)=\zeta^{c_r(\gamma)}x_\gamma,
+\]
+with $\g^{(j)}$ its $\zeta^j$-eigenspace.
+
+\begin{proposition}\label{prop:cyclic-model}
+Finite projection identifies the coefficient-one affine block root spaces with $\g^{(1)}$ as weight spaces. Their degrees are precisely
+\begin{equation}\label{eq:untwisted-block-list}
+ \{\gamma\in\Phi^+:c_r(\gamma)=1\}
+ \sqcup
+ \{\delta-\gamma:\gamma\in\Phi^+,\ c_r(\gamma)=m-1\}.
+\end{equation}
+The invariant form pairs $\g^{(1)}$ nondegenerately with $\g^{(m-1)}$. Only when $m=2$ does complementation by $\delta$ preserve the coefficient-one block section.
+\end{proposition}
+\begin{proof}
+The highest-root bound gives $-m\leq c_r(\gamma)\leq m$. In this interval, the values congruent to one modulo $m$ are $1$ and $1-m$, giving precisely the projections in \eqref{eq:untwisted-block-list}. Conversely, the coefficient-one condition on a positive affine root $\gamma+t\delta$ or $-\gamma+t\delta$ forces $(t,c_r(\gamma))=(0,1)$ or $(1,m-1)$, respectively. Each weight therefore has the indicated unique affine lift.
+
+Opposite finite root spaces pair nondegenerately under the invariant form, giving the pairing between $\g^{(1)}$ and $\g^{(m-1)}$. If $\beta$ has $r$-coefficient one, then $\delta-\beta$ has coefficient $m-1$, so it returns to the same section exactly when $m=2$.
+\end{proof}
+
+This identifies vector spaces and weights, not a Lie subalgebra $\g^{(1)}$. At mark $m$, the degree-$\delta$ configuration has $m$ blocks in place of a complementary pair, with Theorem~\ref{thm:primitive-bracket} providing a nonzero bracketing through real intermediate degrees.
+
+\section{Twisted imaginary multiplicities}\label{sec:twisted}
+
+Let $\widetilde\g$ be finite simple, with a diagram automorphism $\sigma$ of order $d$ and a $\sigma$-stable Cartan subalgebra $\widetilde\h$. Write
+\[
+ \widetilde\g_s=\{x:\sigma(x)=\zeta^sx\},\qquad
+ \widetilde\h_s=\widetilde\h\cap\widetilde\g_s,
+ \qquad \zeta=e^{2\pi i/d}.
+\]
+The twisted loop algebra is
+\begin{equation}\label{eq:twisted-loop}
+ L_\sigma(\widetilde\g)
+ =\bigoplus_{k\in\Z}\widetilde\g_{k\bmod d}\,t^k.
+\end{equation}
+The affine central extension has the same positive root spaces. We normalize loop degree so that $k\delta$ has degree $k$, as in \cite[Chapter~8]{Kac} and \cite[Section~1.3]{MRV}.
+
+\begin{theorem}\label{thm:twisted-multiplicity}
+Let $\mathcal O$ be the orbits of $\sigma$ on the simple coroots of $\widetilde\g$. For an orbit $O$, put $q_O=d/|O|$. Then, for every $k\geq1$,
+\begin{equation}\label{eq:divisor-multiplicity}
+ \widehat\g_{k\delta}=\widetilde\h_{k\bmod d}t^k,
+ \qquad
+ \dim\widehat\g_{k\delta}=\sum_{O\in\mathcal O}\mathbf1_{q_O\mid k}.
+\end{equation}
+Consequently the multiplicities in the twisted families are
+\begin{equation}\label{eq:twisted-table}
+\begin{array}{c|c|c}
+\text{affine type}&d&\dim\widehat\g_{k\delta}\\ \hline
+ A_{2n}^{(2)}&2&n\\
+ A_{2n-1}^{(2)}&2&n-1+\mathbf1_{2\mid k}\\
+ D_{n+1}^{(2)}&2&1+(n-1)\mathbf1_{2\mid k}\\
+ E_6^{(2)}&2&2+2\mathbf1_{2\mid k}\\
+ D_4^{(3)}&3&1+\mathbf1_{3\mid k}.
+\end{array}
+\end{equation}
+The ranges are $n\geq1$ in the first row, $n\geq2$ in the second, and $n\geq3$ in the third, with the usual low-rank identifications understood.
+\end{theorem}
+\begin{proof}
+Choose the element of the positive chamber at which every simple root has value one. It is regular and fixed by the diagram automorphism, so no nonzero finite root restricts to zero on $\widetilde\h_0$. The zero $\widetilde\h_0$-weight space of $\widetilde\g$ is therefore $\widetilde\h$. Taking the appropriate eigenspace in \eqref{eq:twisted-loop} gives the first identity.
+
+On the simple-coroot basis, $\sigma$ is the diagram permutation. An orbit of length $\ell$ contributes the eigenvalue $\zeta^k$ once precisely when $(\zeta^k)^\ell=1$, or equivalently $d/\ell\mid k$. Summing these contributions gives \eqref{eq:divisor-multiplicity}.
+
+The reflection of $A_{2n}$ has $n$ two-element orbits, while that of $A_{2n-1}$ has $n-1$ two-element orbits and one fixed vertex. The spinor exchange of $D_{n+1}$ has one two-element orbit and $n-1$ fixed vertices. For $E_6$, there are two two-element orbits and two fixed vertices; for $D_4$ triality, there is one three-element orbit and one fixed vertex. These give \eqref{eq:twisted-table}.
+\end{proof}
+
+\begin{corollary}\label{cor:index-obstruction}
+In the last four rows of \eqref{eq:twisted-table}, a fixed list of degree-$\delta$ seed words cannot generate a basis in every degree $k\delta$ by one insertion family per seed. In particular, the unchanged indexing in the untwisted conjecture is not a complete twisted formulation.
+\end{corollary}
+\begin{proof}
+A fixed seed list supplies at most $\dim\widehat\g_\delta$ words in any degree, while in each of these four rows the multiplicity increases at $d\delta$.
+\end{proof}
+
+This obstruction concerns the indexing, not residue-dependent periodicity. It does not apply to $A_{2n}^{(2)}$, whose multiplicities are constant.
+
+\subsection{An explicit first-degree obstruction}
+For $A_3^{(2)}$, use the twisted loop realization in $\mathfrak{sl}_4[t,t^{-1}]$ with generators
+\[
+ E_0=t(E_{41}-E_{32}),\qquad E_1=E_{12}-E_{43},\qquad E_2=E_{24}.
+\]
+The null root is $\delta=\alpha_0+\alpha_1+\alpha_2$. With $0<1<2$, the two degree-$\delta$ Lyndon words $021,012$ have opposite nonzero brackets, so $\SL_1(\delta)=021$.
+
+To see the new selection in degree $2\delta$, put
+\[
+ D_-=\diag(1,-1,-1,1),\qquad D_+=\diag(1,1,-1,-1).
+\]
+Direct evaluation of the costandard brackets gives the complete list
+\begin{center}
+\begin{tabular}{cc@{\qquad}cc}
+\toprule
+Word&$t^{-2}\br{w}$&Word&$t^{-2}\br{w}$\\\midrule
+020211&$2D_-$&010122&$0$\\
+012102&$2D_-$&002211&$0$\\
+012021&$0$&002121&$0$\\
+011202&$-2D_-$&002112&$-2D_+$\\
+011022&$0$&001221&$0$\\
+010221&$0$&001212&$2D_+$\\
+010212&$0$&001122&$0$\\\bottomrule
+\end{tabular}
+\end{center}
+in decreasing order down the first word column and then the second. The independent selections are
+\[
+ \SL_1(2\delta)=020211,\qquad \SL_2(2\delta)=002112.
+\]
+There is no $\SL_2(\delta)$ to seed the second selection. This realizes the first nonconstant-multiplicity case of Corollary~\ref{cor:index-obstruction}.
+
+\section{The complete rank-one twisted formula}\label{sec:rankone}
+
+In $A_2^{(2)}$, the imaginary spaces are one-dimensional by Theorem~\ref{thm:twisted-multiplicity}. We can prove insertion directly from commutativity of the zero-weight spaces, using a singly indexed block alphabet after two cuts. No untwisted propagation result is needed.
+
+\begin{lemma}[Cartan sandwich comparison]\label{lem:sandwich}
+Let $D_0<D_1<\cdots$ be an ordered alphabet mapped to a $\Z$-graded Lie algebra, with $D_j$ having weight $j-c$, where $c\geq1$. Suppose that its weight-zero subalgebra is abelian. For $N\geq2$, every weight-zero Lyndon word of $N$ letters for which every Lyndon factor has nonzero bracket is at most
+\[
+ Z_N=D_{c-1}D_c^{N-2}D_{c+1}.
+\]
+\end{lemma}
+\begin{proof}
+The first letter of a Lyndon word is its least occurring letter. Its index is at most $c-1$, since otherwise zero weight would force every letter to be $D_c$, impossible for a Lyndon word with $N\geq2$. An index smaller than $c-1$ already gives the required bound. We may therefore take $D_{c-1}$ as the least letter and suppose, for a contradiction, that the word exceeds $Z_N$.
+
+Cut before each $D_{c-1}$. The first block contains a letter greater than $D_c$, since otherwise the next $D_{c-1}$ or the end of the word gives the opposite comparison with $Z_N$. Any block lacking such a letter is $D_{c-1}D_c^b$ and is smaller than the first block, whatever $b$ is. By Lemma~\ref{lem:block-substitution}, that would violate the Lyndon condition at the new block level. Hence every block has a positive-weight letter.
+
+Every block thus has nonnegative weight. Since their total weight is zero, each has exactly one $D_{c+1}$ and no letter of greater index. Write it as
+\[
+ D_{c-1}D_c^bD_{c+1}D_c^e.
+\]
+If $e>0$, the Lyndon factor $D_{c-1}D_c^bD_{c+1}D_c$ has costandard suffix $D_c$ and brackets two weight-zero elements. Its bracket vanishes, contrary to the hypothesis. Thus $e=0$ in every block.
+
+All blocks have weight zero. With more than one block, Lemma~\ref{lem:block-substitution} gives a bracket of commuting weight-zero elements, which vanishes. With one block, the word is $Z_N$ itself. Neither case allows the assumed strict inequality.
+\end{proof}
+
+\begin{theorem}\label{thm:A2twisted}
+Normalize $A_2^{(2)}$ by $\delta=\alpha_0+2\alpha_1$. For every $k\geq1$, its unique imaginary standard Lyndon word and its longest proper Lyndon prefix are
+\begin{align}
+ 0<1:
+ &\quad\SL(k\delta)=01(011)^{k-1}1,
+ &&\SL^{\ls}(k\delta)=01(011)^{k-1},\label{eq:A2-order01}\\
+ 1<0:
+ &\quad\SL(k\delta)=1(110)^{k-1}10,
+ &&\SL^{\ls}(k\delta)=1(110)^{k-1}.
+ \label{eq:A2-order10}
+\end{align}
+Thus the degree-$\delta$ insertion formula holds for both alphabet orders in the smallest twisted affine type.
+\end{theorem}
+\begin{proof}
+Use the realization in $\mathfrak{sl}_3[t,t^{-1}]$ with
+\[
+ e=E_1=E_{12}-E_{23},\qquad f=E_0=tE_{31}.
+\]
+These generators lie in the twisted loop algebra for $X\mapsto-JX^TJ$, with $J$ the antidiagonal matrix of ones. The invariant Cartan direction $\diag(1,0,-1)$ gives finite weights one and minus two for $e,f$, so the simple-root degrees give the stated null root. The positive imaginary spaces are diagonal zero-weight spaces and commute (their positive-degree brackets have no central term).
+
+For $0<1$, cut a standard word of degree $k\delta$ into blocks $D_j=01^j$. There are $k$ blocks, with indices summing to $2k$, increasing word order in $j$, and finite weights $j-2$. Every block-Lyndon factor expands to a standard Lyndon factor by Lemma~\ref{lem:block-substitution} and factor closure. The sandwich lemma with $c=2$ therefore bounds the word by
+\[
+ D_1D_2^{k-2}D_3=01(011)^{k-1}1
+ \qquad(k\geq2).
+\]
+To prove the reverse inequality, suppress the powers of $t$ and set
+\[
+ x=\br{01}=E_{21}+E_{32},\quad
+ H=\br{011}=\diag(-1,2,-1),\quad
+ y=\br{0111}=-3(E_{12}+E_{23}).
+\]
+The candidate has costandard bracket $[x,(\ad H)^{k-2}y]$, whose $E_{11}$ coefficient is $3(-3)^{k-2}\ne0$. A nonzero Lyndon word cannot exceed the unique selected word in this one-dimensional imaginary space, so the bounds agree. For $k=1$, the sole Lyndon word is $011$, with the nonzero bracket displayed above.
+
+For $1<0$, the first cut gives blocks $10^j$. A block with $j\geq2$ contains the Lyndon factor $100$, whose bracket $[[e,f],f]$ vanishes, and is excluded by factor closure. Thus the block alphabet is
+\[
+ a=1,\qquad b=10,\qquad a<b.
+\]
+In degree $k\delta$ there are $k$ copies of each letter. Cut again before each $a$ and write $D_j=ab^j$ for the resulting blocks. There are $k$ such blocks, with indices summing to $k$. The negative of their finite weight is $j-1$, so the sandwich lemma with $c=1$ bounds the word, for $k\geq2$, by
+\[
+ D_0D_1^{k-2}D_2=1(110)^{k-1}10.
+\]
+Here $\br{D_0}=e$, $\br{D_1}=H$, and, after suppressing the loop power,
+\[
+ \br{D_2}=\br{11010}=-3E_{21}+3E_{32}.
+\]
+The costandard bracket is $[e,(\ad H)^{k-2}\br{D_2}]$, with nonzero $E_{11}$ coefficient $-3^{k-1}$. The same one-dimensional comparison gives \eqref{eq:A2-order10}. For $k=1$, the word is $110$ and its bracket is $H$.
+
+For \eqref{eq:A2-order01}, removing the last letter leaves the Lyndon block word $D_1D_2^{k-1}$, so this is the longest proper Lyndon prefix. For \eqref{eq:A2-order10}, the proposed prefix $a(ab)^{k-1}$ is Lyndon when $k\geq2$: its initial two $a$'s precede the first $b$, while every later suffix beginning with $a$ next has $b$. The sole longer proper prefix has length greater than one and ends in the least simple letter $1$, so is not Lyndon. At $k=1$, the prefix is $1$.
+\end{proof}
+
+\section{The remaining twisted insertion problem}\label{sec:conjecture}
+
+The multiplicities suggest different strides for the insertion families, rather than a family for each degree-$\delta$ seed. The following conjecture supplies the required number of words in every degree and asks for insertion from the first admissible degree, not just eventual periodicity.
+
+\begin{conjecture}[Divisibility-stratified insertion]\label{conj:twisted-insertion}
+For a twisted affine algebra constructed from a diagram automorphism $\sigma$ of order $d$, and every alphabet order, there is a collection of families indexed by the orbits $O$ of $\sigma$, with strides $q_O=d/|O|$, having the following properties. Each family has a seed standard Lyndon word of degree $q_O\delta$, with standard factorization $L_OR_O$, and a word $W_O$ of degree $q_O\delta$. For every $k\geq1$, the complete set of imaginary standard Lyndon words is the disjoint set
+\begin{equation}\label{eq:twisted-insertion}
+ \left\{L_OW_O^{k/q_O-1}R_O:q_O\mid k\right\},
+\end{equation}
+and the standard prefix of each displayed word is $L_OW_O^{k/q_O-1}$. The period $W_O$ is a cyclic rotation of a standard Lyndon word in degree $q_O\delta$ that is at least the seed in lexicographic order. The orbit indexing is not required to be canonical.
+\end{conjecture}
+
+Theorem~\ref{thm:A2twisted} proves this in $A_2^{(2)}$. For the other families, \eqref{eq:divisor-multiplicity} determines the number of words but not their order. The supplementary calculation first constructs the homogeneous Lie spaces and selects costandard brackets, and only then tests \eqref{eq:twisted-insertion}. A separate enumeration of all binary Lyndon words through $6\delta$ agrees with Theorem~\ref{thm:A2twisted}.
+
+For the remaining families, the missing step is a comparison of the ordered imaginary flags across the diagram eigenspaces, including families absent in some degrees, followed by propagation at the specified strides. Finiteness of the block alphabet and nonvanishing of some primitive bracketing do not identify the greatest word in a flag quotient. Thus they do not by themselves give this comparison.
+
+\section*{Author Contributions}
+Author order reflects relative contribution. Pranava and Abhijay developed the mathematical theory, executed the proofs, and drafted the manuscript; Manolis Kellis provided computational resources and supervised the project. All authors reviewed the final manuscript.
+\section*{Declarations}
+The authors received no funding for this work and declare no competing interests.
+
+\begin{thebibliography}{9}
+\bibitem{ET} C.~Elkins and A.~Tsymbaliuk, \emph{Affine standard Lyndon words}, arXiv:2505.15432, author-hosted revision of June~19, 2025. \url{https://www.math.purdue.edu/~otsymbal/Papers/AffineSL.pdf}.
+\bibitem{Kac} V.~G.~Kac, \emph{Infinite-Dimensional Lie Algebras}, third edition, Cambridge University Press, Cambridge, 1990.
+\bibitem{LR} P.~Lalonde and A.~Ram, \emph{Standard Lyndon bases of Lie algebras and enveloping algebras}, Transactions of the American Mathematical Society \textbf{347} (1995), no.~5, 1821--1830.
+\bibitem{MRV} D.~Masoero, A.~Raimondo, and D.~Valeri, \emph{Bethe Ansatz and the spectral theory of affine Lie algebra-valued connections II: the non simply-laced case}, Communications in Mathematical Physics \textbf{349} (2017), 1063--1105.
+\end{thebibliography}
+\end{document}

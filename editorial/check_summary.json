@@ -1,0 +1,9 @@
+{
+  "twisted_cases": 77,
+  "twisted_families": 214,
+  "untwisted_phase_cases": 129,
+  "untwisted_phase_indices": 513,
+  "raw_binary_replays": "both orders through 6 delta, matched recorded files",
+  "model_configs": 13,
+  "D4_jacobi_triples": 21952
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "type": "B",
+    "r": 2,
+    "s": 2,
+    "k": 1,
+    "multisets": 10
+  },
+  {
+    "type": "B",
+    "r": 2,
+    "s": 2,
+    "k": 2,
+    "multisets": 103
+  },
+  {
+    "type": "D",
+    "r": 2,
+    "s": 2,
+    "k": 1,
+    "multisets": 8
+  },
+  {
+    "type": "D",
+    "r": 2,
+    "s": 2,
+    "k": 2,
+    "multisets": 60
+  },
+  {
+    "type": "B",
+    "r": 2,
+    "s": 0,
+    "k": 1,
+    "multisets": 2
+  },
+  {
+    "type": "B",
+    "r": 2,
+    "s": 0,
+    "k": 2,
+    "multisets": 3
+  },
+  {
+    "type": "B",
+    "r": 2,
+    "s": 0,
+    "k": 3,
+    "multisets": 4
+  }
+]

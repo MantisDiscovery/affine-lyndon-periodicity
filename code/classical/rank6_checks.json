@@ -1,0 +1,23 @@
+[
+  {
+    "type": "B",
+    "rank": 6,
+    "orders": 3600,
+    "raising": 188522,
+    "depth": 0
+  },
+  {
+    "type": "C",
+    "rank": 6,
+    "orders": 3600,
+    "raising": 133140,
+    "depth": 0
+  },
+  {
+    "type": "D",
+    "rank": 6,
+    "orders": 2160,
+    "raising": 121744,
+    "depth": 0
+  }
+]

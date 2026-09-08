@@ -1,0 +1,74 @@
+{
+  "scope": "Exact finite checks, separate from proofs",
+  "ranks": [
+    {
+      "n": 2,
+      "internal_orders": 2,
+      "real_grid_words": 8,
+      "delta_candidates": 4,
+      "direct_lyndon_evaluations": 108,
+      "corrected_parent_cases": {
+        "Q<P": 2
+      }
+    },
+    {
+      "n": 3,
+      "internal_orders": 12,
+      "real_grid_words": 96,
+      "delta_candidates": 48,
+      "direct_lyndon_evaluations": 360,
+      "corrected_parent_cases": {
+        "Q<P": 22,
+        "P<Q": 2
+      }
+    },
+    {
+      "n": 4,
+      "internal_orders": 72,
+      "real_grid_words": 960,
+      "delta_candidates": 480,
+      "direct_lyndon_evaluations": 0,
+      "corrected_parent_cases": {
+        "Q<P": 194,
+        "P<Q": 22
+      }
+    },
+    {
+      "n": 5,
+      "internal_orders": 480,
+      "real_grid_words": 9600,
+      "delta_candidates": 4800,
+      "direct_lyndon_evaluations": 0,
+      "corrected_parent_cases": {
+        "Q<P": 1716,
+        "P<Q": 204
+      }
+    }
+  ],
+  "counterexample": {
+    "i": 2,
+    "word": [
+      1,
+      1,
+      2,
+      0
+    ],
+    "L": [
+      1,
+      1,
+      2
+    ],
+    "beta": [
+      2,
+      0
+    ],
+    "j": 1,
+    "y": [
+      1,
+      1,
+      2
+    ],
+    "appends": []
+  },
+  "quadratic_zero_configurations_r2_s2_k1to3": 396
+}

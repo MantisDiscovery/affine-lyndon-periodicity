@@ -1,0 +1,51 @@
+[
+  {
+    "type": "B",
+    "rank": 2,
+    "orders": 2,
+    "raising": 2,
+    "depth": 3
+  },
+  {
+    "type": "B",
+    "rank": 3,
+    "orders": 12,
+    "raising": 86,
+    "depth": 3
+  },
+  {
+    "type": "B",
+    "rank": 4,
+    "orders": 72,
+    "raising": 1236,
+    "depth": 3
+  },
+  {
+    "type": "C",
+    "rank": 2,
+    "orders": 2,
+    "raising": 2,
+    "depth": 3
+  },
+  {
+    "type": "C",
+    "rank": 3,
+    "orders": 12,
+    "raising": 52,
+    "depth": 3
+  },
+  {
+    "type": "C",
+    "rank": 4,
+    "orders": 72,
+    "raising": 782,
+    "depth": 3
+  },
+  {
+    "type": "D",
+    "rank": 4,
+    "orders": 24,
+    "raising": 480,
+    "depth": 3
+  }
+]

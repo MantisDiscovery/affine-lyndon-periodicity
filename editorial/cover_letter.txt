@@ -1,0 +1,15 @@
+Dear Editors,
+
+Please consider our manuscript, “Imaginary standard Lyndon periodicity in untwisted affine types,” for publication in Journal of Algebra and Its Applications.
+
+The manuscript proves the remaining classical cases of the imaginary standard Lyndon insertion conjecture by arguments uniform in rank and alphabet order. Together with the exceptional-type verification and propagation theorem of Elkins and Tsymbaliuk, these results establish the conjecture in every untwisted affine type. The exceptional verification is cited as prior work, not presented as a new contribution.
+
+We also complete the untwisted imaginary-flag connectivity statement and derive a type-independent formula for the exact increasing-chain preperiod. The first two imaginary degrees then recover the increasing positive system and its Dynkin parent tree. Further results concern primitive column lattices, zero-weight configurations, and effective construction of the words.
+
+The supplementary programs contain exact finite checks. The all-rank classical and phase arguments do not depend on those supplementary checks; the exceptional parts use the separately cited prior computer-assisted results.
+
+Authors: Pranava Kumar, Abhijay Gangarapu, and Manolis Kellis.
+Correspondence: Pranava Kumar, pranavak@mit.edu.
+
+Sincerely,
+Pranava Kumar

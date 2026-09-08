@@ -1,0 +1,1717 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,mathtools,booktabs,microtype,needspace}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Prj}{Pr}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\spalg}{sp}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\g}{\mathfrak g}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\nhat}{\widehat{\mathfrak n}^{+}}
+\newcommand{\ls}{\mathrm{ls}}
+\newcommand{\rs}{\mathrm{rs}}
+\newcommand{\br}[1]{b(#1)}
+\newcommand{\ph}{\widehat\Phi}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={Imaginary standard Lyndon periodicity in untwisted affine types},
+  pdfauthor={Pranava Kumar, Abhijay Gangarapu, Manolis Kellis}}
+\title[Imaginary Lyndon periodicity in untwisted affine types]{Imaginary standard Lyndon periodicity\\ in untwisted affine types}
+\author{Pranava Kumar}
+\author{Abhijay Gangarapu}
+\author{Manolis Kellis}
+\address[Pranava Kumar and Manolis Kellis]{Massachusetts Institute of Technology, Cambridge, Massachusetts 02139, USA}
+\email[Pranava Kumar]{pranavak@mit.edu}
+\subjclass[2020]{17B67, 17B22, 05E10}
+\keywords{Standard Lyndon word, affine Lie algebra, imaginary root, affine root system, signed graph}
+\date{}
+\begin{document}
+\begin{abstract}
+We prove that imaginary standard Lyndon words satisfy a fixed insertion formula in every untwisted affine type and every alphabet order, by establishing the remaining classical cases uniformly in the rank and combining them with the exceptional-type verification of Elkins and Tsymbaliuk. The classical argument represents real blocks as greatest extensions of chain or fork ideals: a first-endpoint comparison and a reflected raising lemma determine the word in degree $2\delta$, after which an existing propagation theorem gives all degrees. The same analysis proves the classical cases of imaginary-flag connectivity and, together with the previously verified exceptional cases, completes that conjecture. A type-independent phase argument identifies the exact increasing-chain preperiod with the initial standard prefix followed by a proper suffix of the period's Lyndon parent. This gives the bound $2|\delta|-2$ for its length and recovers the increasing positive system and its Dynkin parent tree from the two lowest imaginary degrees. We also give polynomial preprocessing in every untwisted type, with a sharper classical bound, and determine the primitive column lattices and zero-weight switch bounds in the classical models.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+Standard Lyndon bases attach words to the positive root spaces of a Lie algebra once its simple-root alphabet has been ordered. In finite type there is one word for each positive root, whereas in untwisted affine type only the real root spaces remain one-dimensional. A positive imaginary root has multiplicity equal to the finite rank, so an imaginary word must specify a position in a Cartan flag as well as a degree. To pass from real-root periodicity to an insertion formula for imaginary words, we must therefore control this flag position.
+
+The standard Lyndon basis construction is due to Lalonde and Ram \cite{LR}; its recursive form in finite type was given by Leclerc \cite[Proposition~25]{Le}. Avdieiev and Tsymbaliuk extended this recursion to affine Lie algebras and determined the words in type $A$ \cite[Proposition~3.4 and Theorem~4.7]{AT}. Elkins and Tsymbaliuk proved convexity and monotonicity in arbitrary untwisted affine type \cite{ET}, followed by periodicity for real-root chains \cite{ETC}. Their imaginary periodicity conjecture \cite[Conjecture~6.26]{ET} asks for a fixed insertion formula beginning at degree $\delta$. We establish the remaining classical cases, types $B$, $C$, and $D$, in arbitrary rank. The exceptional cases were already verified for every alphabet order by their degree-two computation and propagation theorem \cite[Remark~6.29 and Proposition~6.32]{ET}, so the combination covers every untwisted type.
+
+Fix an untwisted affine Lie algebra whose finite irreducible root system has rank $n$, and choose any order on its simple-root alphabet $\{0,\ldots,n\}$. We index the degree-$k\delta$ standard Lyndon words in decreasing lexicographic order,
+\[
+ \SL_1(k\delta)>\cdots>\SL_n(k\delta).
+\]
+Here $\delta$ is the minimal positive imaginary root. For a Lyndon word $w$, we use the \emph{standard factorization} $w=w^{\ls}w^{\rs}$, in which $w^{\ls}$ is the longest proper Lyndon prefix. The recursive Lie bracket uses the other convention, the \emph{costandard factorization}, defined by the longest proper Lyndon suffix.
+
+\Needspace{7\baselineskip}
+\begin{theorem}\label{thm:main}
+Let the affine type be any untwisted affine type of finite rank $n$. For every alphabet order and every $1\leq i\leq n$, write
+\[
+ \SL_i(\delta)=L_iR_i
+\]
+as a standard factorization. There is a cyclic permutation $W_i$ of $\SL_j(\delta)$ for some $j\leq i$ such that, for every $k\geq1$,
+\begin{equation}\label{eq:main}
+ \SL_i(k\delta)=L_iW_i^{k-1}R_i,
+ \qquad
+ \SL_i^{\ls}(k\delta)=L_iW_i^{k-1}.
+\end{equation}
+Suppose further that the finite type is $B$, $C$, or $D$, the least letter $r$ has coefficient two in $\delta$, and $i>1$. Write the costandard factorization as
+\[
+ \SL_i(\delta)=UV=UPa,
+ \qquad P=V^{-},
+\]
+where $V^{-}$ denotes deletion of the final letter $a$. Then $P$ has real degree, and the unique real standard Lyndon word $Q$ of degree $\delta-\deg P$ satisfies
+\[
+ L_i=UP,\qquad R_i=a,\qquad W_i=QP.
+\]
+Moreover, $\min(P,Q)\max(P,Q)=\SL_j(\delta)$ for a unique $j<i$.
+\end{theorem}
+
+The initial word is given by \cite[Proposition~6.25]{ET}, and least letters of coefficient one are covered by \cite[Theorem~6.14]{ET}. For $i>1$, this leaves the following all-rank cases,
+\[
+ \begin{array}{ll}
+ B_n^{(1)}:&2\leq r\leq n,\\
+ C_n^{(1)}:&1\leq r\leq n-1,\\
+ D_n^{(1)}:&2\leq r\leq n-2,
+ \end{array}
+\]
+which we reduce to a uniform calculation in degree $2\delta$.
+
+\subsection{Real blocks and the degree-two calculation}
+Suppose that the least letter has Kac mark two. Cutting immediately before each occurrence of this letter $r$ in an imaginary standard Lyndon word gives $2k$ real standard Lyndon blocks in degree $k\delta$. Their possible degrees belong to a finite set independent of $k$; in type $C$, this set is a rectangle. To describe it, put
+\[
+ A=(r-1,r-2,\ldots,1,0,1,\ldots,r-1),
+ \qquad
+ B=(r+1,r+2,\ldots,n,n-1,\ldots,r+1).
+\]
+These palindromic arms run from $r$ towards an endpoint and back. If $G$ is the greatest shuffle that preserves the order within each arm, then the block words are
+\[
+ X_{p,q}=rG(A[1:p],B[1:q]),
+ \qquad 0\leq p\leq2r-1,\quad 0\leq q\leq2(n-r)-1.
+\]
+Complementation by $\delta$ reflects this rectangle through its center.
+
+The orthogonal diagrams have forks, so their blocks cannot be indexed by two chains in this way. We instead use labeled arm posets, each with a chain of ideals except for two central choices. There are two forks in type $D$, while type $B$ has a left fork and a right chain passing through a zero-weight state. A block is the greatest labeled linear extension of its two arm ideals, with complementation reversing inclusion. The resulting alphabets have $4r(n-r)$ blocks in types $C,D$ and $2r(2(n-r)+1)$ in type $B$.
+
+In degree $\delta$, the candidates are complementary concatenations $UV$ with $U<V$. Their longest proper Lyndon prefixes either stop between the blocks or end one letter before the end of $V$. We show that precisely one pair has the first behavior: a greedy comparison up to the first coefficient-one endpoint identifies it and gives $\SL_1(\delta)$. In type $B$, the right half-arm must stop at zero in this comparison (continuing past zero gives the wrong stopping rule).
+
+For each remaining selected pair, write $V=Pa$. We prove
+\[
+ \SL_i(2\delta)=UPQPa,
+ \qquad
+ \SL_i^{\ls}(2\delta)=UPQP,
+ \qquad \deg P+\deg Q=\delta.
+\]
+The main difficulty is to obtain both the word comparison and the flag position. A reflected raising argument bounds the third block by $Q$, treating the incomparable fork ideals separately rather than as consecutive chain states. We then evaluate the costandard bracket of $UPQPa$ in the new Cartan-flag layer. In type $B$, two short roots can give a zero Cartan action, but the ideal order excludes exactly the word order in which that action would occur. The propagation theorem \cite[Proposition~6.32]{ET} then yields \eqref{eq:main} in every degree.
+
+\subsection{Flags, parents, and integral structure}
+The exceptional-pair theorem also gives the classical cases of imaginary-flag connectivity \cite[Conjecture~4.27]{ETC}: each root subsystem defined by a Cartan-flag layer is irreducible. For a coefficient-two least letter, we obtain the successive types
+\[
+ \begin{array}{ll}
+ B_n:& A_1,\ldots,A_{t-1},B_t,\ldots,B_n,\quad 1\leq t\leq n,\\
+ C_n:& A_1,\ldots,A_{t-1},C_t,\ldots,C_n,\quad 2\leq t\leq n,\\
+ D_n:& A_1,\ldots,A_{t-1},D_t,\ldots,D_n,\quad 3\leq t\leq n.
+ \end{array}
+\]
+(with the initial $A$-sequence empty when $t=1$, and $D_3$ understood as the root system isomorphic to $A_3$).
+
+Let $M$ be the square integral matrix of primitive Cartan directions of the selected degree-$\delta$ brackets, written in the standard $e_a$ coordinates. In types $C,D$ we obtain
+\[
+ M\Z^n=\{z\in\Z^n:\textstyle\sum_a z_a\equiv0\pmod2\},
+ \qquad |\det M|=2.
+\]
+In type $B$, it is instead
+\[
+ M\Z^n=\Z^n,\qquad |\det M|=1.
+\]
+The difference is caused by the zero-weight state, which supplies a primitive coordinate column before the Lyndon selection can form an unbalanced signed cycle. Once this ordering fact is established, the usual incidence-rank and determinant calculations apply to the selected flags.
+
+For $i>1$, we identify the increasing-chain preperiod as $L_i$ when $Q<P$ and $L_iQ$ when $P<Q$. Thus the greedy construction makes either no real append or only the append $Q$ before repeating an imaginary word. The earlier-parent indices recover the finite Dynkin tree on the simple increasing roots (a path in types $B,C$, with a possible trivalent vertex in type $D$).
+
+Both the period and its parent are unique. For a coefficient-two minimum, we construct the degree-$\delta$ words and their factors in $O(n^3\log n)$ time and $O(n^3)$ space in the alphabet-comparison model, then retain only an $O(n^2)$ factor table. A degree-$k\delta$ word can subsequently be written in $O(kn)$ time, proportional to its length, or queried at a specified position without being expanded.
+
+\subsection{Zero-weight configurations and uniform consequences}
+The classical coefficient-two blocks have the finite weights of a symplectic or orthogonal tensor representation. A multiset of $2k$ blocks has degree $k\delta$ exactly when those weights sum to zero, and we show that at most $k-1$ rectangle switches turn it into $k$ antipodal pairs. The bound is sharp when each side has at least $k$ coordinate axes. These are multiset operations, not Lie-bracket identities: the bracket calculation must retain the insertion cut, as a rank-two example shows through a correction in the earlier flag layer.
+
+The finite-block and substitution arguments occupy Sections~\ref{sec:blocks}--\ref{sec:substitution}. We develop the chain model in type $C$ in Sections~\ref{sec:grid}--\ref{sec:degree-two}, including its flags and preperiods, then treat the fork comparison and short-root bracket in Section~\ref{sec:orthogonal}. The parent tree and effective construction are given in Section~\ref{sec:construction}; the weight and pointed-cut interpretations follow in Sections~\ref{sec:weights}--\ref{sec:cuts}. The supplementary programs compare the classical construction with a separate generalized-Leclerc implementation using exact matrix brackets (the classical proofs do not use these computations).
+
+After invoking the prior exceptional verifications, Section~\ref{sec:all-untwisted} completes both untwisted conjectures and derives a uniform phase formula for the preperiod. This gives $|y_i|\leq2h-2$, the parent-tree description, and polynomial preprocessing without further use of the chain-and-fork model: only periodicity and connectivity enter these deductions. Twisted types are treated in the companion note, since their degree-dependent imaginary multiplicities can require a different indexing from that in Theorem~\ref{thm:main}.
+
+\section{Conventions and the standard Lyndon construction}\label{sec:conventions}
+
+Numbered citations to \cite{ET} and \cite{ETC} refer to the author-hosted revisions of June~19, 2025 and August~15, 2026, respectively (see the bibliography).
+
+We work in characteristic zero and use the rational Chevalley form for the lattice statements. The word and flag conventions apply to all untwisted types; the coordinates through Section~\ref{sec:degree-two} are those of $C_n^{(1)}$, with the orthogonal coordinates specified in Section~\ref{sec:orthogonal}. Write $\nhat$ for the positive nilpotent subalgebra and equip $\widehat I=\{0,\ldots,n\}$ with an arbitrary total order. The numerical labels name vertices of the Dynkin diagram, not their positions in this order.
+
+We use lexicographic order, with a proper prefix smaller than its extension, and call a contiguous subword a \emph{factor}. A nonempty word is Lyndon if it is smaller than every nonempty proper suffix. For a word $w$, write $|w|$ for its length and $\deg w$ for the sum of its simple-root letters, counted with multiplicity. If the word is nonempty, $w^{-}$ denotes deletion of its last letter.
+
+For the recursive bracketing we use the \emph{costandard factorization} $w=w^lw^r$, whose right factor $w^r$ is the longest proper Lyndon suffix. Thus
+\[
+ \br{i}=E_i,
+ \qquad
+ \br{w}=[\br{w^l},\br{w^r}],
+\]
+where $E_i$ are the positive Chevalley generators. The \emph{standard factorization} $w=w^{\ls}w^{\rs}$ instead takes $w^{\ls}$ to be the longest proper Lyndon prefix. Both factors are Lyndon under either convention \cite[Propositions~2.5--2.6]{ETC}.
+
+A Lyndon word $w$ is \emph{standard} if $\br{w}$ is not in the span of the brackets of larger Lyndon words of the same degree. This homogeneous form of the Lalonde--Ram construction gives a basis of $\nhat$ \cite[Theorem~2.1]{LR}. We will repeatedly use its closure under Lyndon factors: every Lyndon factor of a standard word is standard \cite[Proposition~2.4 and Corollary~2.8(b)]{LR}.
+
+Write $\Phi$ for the finite root system. In the type-$C$ orthonormal coordinates,
+\[
+ \Phi=\{\pm e_a\pm e_b:a<b\}\cup\{\pm2e_a:1\leq a\leq n\},
+\]
+and
+\[
+ \alpha_i=e_i-e_{i+1}\ (1\leq i<n),
+ \qquad \alpha_n=2e_n,
+ \qquad \theta=2e_1,
+ \qquad \alpha_0=\delta-\theta.
+\]
+In particular,
+\begin{equation}\label{eq:null-root}
+ \delta=\alpha_0+2\alpha_1+\cdots+2\alpha_{n-1}+\alpha_n,
+ \qquad h:=|\delta|=2n.
+\end{equation}
+The finite projection $\Prj$ sends $\delta$ to zero and fixes the finite root lattice. Positive real roots are $\gamma+t\delta$ with $\gamma\in\Phi^+$ and $t\geq0$, or $-\gamma+t\delta$ with $\gamma\in\Phi^+$ and $t\geq1$. The remaining positive roots are $k\delta$, $k\geq1$.
+
+We denote the unique standard Lyndon word in a real degree by $\SL(\alpha)$. An imaginary root space has dimension $n$, and we index its words in decreasing order as above. For $v\in\Q^n$, put
+\[
+ H_v=\diag(v_1,\ldots,v_n,-v_1,\ldots,-v_n)\in\h.
+\]
+For a finite root $\gamma$, the element $H_\gamma$ spans its coroot direction. In the loop realization,
+\[
+ \widehat\g_{\gamma+\ell\delta}=\g_\gamma t^\ell,
+ \qquad
+ \widehat\g_{k\delta}=\h t^k.
+\]
+For $0\leq i\leq n$, define
+\[
+ S_i^k=\Span\{\br{\SL_1(k\delta)},\ldots,\br{\SL_i(k\delta)}\},
+ \qquad S_0^k=0.
+\]
+These flags satisfy $S_i^{k+1}=tS_i^k$ by \cite[Proposition~3.5 and Corollary~3.6]{ETC}.
+
+We use the generalized Leclerc recursion in the form of \cite[Proposition~3.4]{AT}. In a real degree $\alpha$, it selects the greatest concatenation $uv$ of standard Lyndon words satisfying $u<v$, $\deg u+\deg v=\alpha$, and $[\br{u},\br{v}]\ne0$. In an imaginary degree, it scans the candidates in decreasing order, retaining a word when its actual Lyndon bracket is independent of the brackets already retained. In particular, for a Lyndon word $w$ of degree $k\delta$, the condition
+\[
+ \br{w}\notin S_{i-1}^k,
+\]
+implies $w\leq\SL_i(k\delta)$ by the defining greedy order. We need not establish standardness of $w$ to use this implication.
+
+If the sum of two positive real roots is real, then the bracket of any two nonzero vectors in their root spaces is nonzero. If the sum is $k\delta$, their finite projections are opposite, and the bracket is a nonzero multiple of the corresponding coroot direction in $\h t^k$ (the central term vanishes in positive imaginary degree).
+
+\section{A finite real-block alphabet}\label{sec:blocks}
+
+The block reduction uses only the coefficient of the least letter in $\delta$, so we begin in arbitrary untwisted affine type. Write
+\[
+ \delta=\sum_{j\in\widehat I}a_j\alpha_j,
+\]
+and let $r$ be the least letter. An \emph{$r$-block} is a word $rA$ in which $A$ contains no occurrence of $r$.
+
+\begin{theorem}\label{thm:finite-blocks}
+Suppose that $a_r=m\geq2$. For every $k\geq1$, each standard Lyndon word of degree $k\delta$ has a unique factorization into $km$ $r$-blocks, each of which is a real standard Lyndon word. The possible block degrees belong to the finite set
+\begin{equation}\label{eq:block-roots}
+ \mathcal R_r=
+ \{\gamma\in\Phi^+:[\gamma:\alpha_r]=1\}
+ \sqcup
+ \{\delta-\gamma:\gamma\in\Phi^+,
+                    [\gamma:\alpha_r]=m-1\}.
+\end{equation}
+Here $\Phi^+$ is the positive finite root system obtained by deleting the distinguished affine vertex $0$. In particular, the block alphabet is independent of $k$.
+\end{theorem}
+
+\begin{proof}
+A Lyndon word containing $r$ starts with $r$, so its subsequent occurrences of $r$ give the unique cuts into $km$ blocks. Each block is Lyndon because its initial letter is its only least letter, and is standard by factor closure. Its degree is thus a root with $\alpha_r$-coefficient one. Since a positive imaginary root has $\alpha_r$-coefficient divisible by $m$, every block is real.
+
+To list the real possibilities, observe that $a_0=1$, so $m\geq2$ implies $r\ne0$. For $\gamma\in\Phi^+$, put $c=[\gamma:\alpha_r]$, with $0\leq c\leq m$. A positive real root $\gamma+t\delta$ has coefficient $c+tm$, which is one precisely for $t=0$ and $c=1$. For a positive real root $-\gamma+t\delta$, where $t\geq1$, we instead require
+\[
+ tm-c=1.
+\]
+The case $t\geq2$ would give $c=tm-1\geq2m-1>m$, so $t=1$ and $c=m-1$. We obtain \eqref{eq:block-roots}, whose two parts are disjoint by their $\alpha_0$-coefficients (zero and one, respectively). There is a unique standard Lyndon word in each real degree, so the word alphabet is finite as well.
+\end{proof}
+
+This is the alphabet of possible blocks; a block on the list need not occur in a selected imaginary word.
+
+\section{Substitution and Lyndon factorizations}\label{sec:substitution}
+
+We must check that replacing blocks by letters preserves comparison after expansion. The only delicate case is a proper-prefix relation: the shorter block either ends the word or is followed by another $r$.
+
+Let $\mathcal D$ be a set of distinct $r$-blocks, ordered by their expanded words. Let
+\[
+ \varphi:\mathcal D^*\longrightarrow\widehat I^*
+\]
+be concatenation of the expansions, including the empty word.
+
+\begin{proposition}\label{prop:embedding}
+The map $\varphi$ is injective and preserves and reflects lexicographic order.
+\end{proposition}
+\begin{proof}
+The occurrences of $r$ recover the block boundaries, so the map is injective. Compare the first unequal blocks. An internal difference decides the comparison before either tail is reached. If one block is a proper prefix of the other, the shorter side ends or continues with $r$, while the longer side has a letter greater than $r$. Thus the block comparison survives expansion in every case, including when one entire block word is a prefix of the other.
+\end{proof}
+
+\begin{proposition}\label{prop:lyndon-substitution}
+A nonempty block word $u\in\mathcal D^*$ is Lyndon if and only if $\varphi(u)$ is Lyndon.
+\end{proposition}
+\begin{proof}
+At a block boundary, the suffix comparison is preserved by Proposition~\ref{prop:embedding}. Every unaligned suffix starts with a letter greater than $r$, whereas $\varphi(u)$ starts with $r$, so only the aligned suffixes can affect the Lyndon condition.
+\end{proof}
+
+\begin{proposition}\label{prop:costandard-substitution}
+If a Lyndon block word $u$ has at least two block letters, then its costandard factorization expands to the costandard factorization of $\varphi(u)$.
+\end{proposition}
+\begin{proof}
+The final complete block is a proper Lyndon suffix of $\varphi(u)$. A longer suffix starting inside an earlier block cannot be Lyndon, since it begins above $r$ and contains a later $r$; a suffix inside the final block is shorter. Thus the longest proper Lyndon suffix is aligned, and Proposition~\ref{prop:lyndon-substitution} identifies it with the expansion of the longest proper Lyndon block suffix.
+\end{proof}
+
+At least two block letters are needed here, since a one-letter block alphabet does not record the internal costandard factorization of that block. For standard factorizations there is already a discrepancy with two blocks. Under $1<0<2$, for instance, $U=1$ and $V=120$ give the Lyndon word $UV=1120$, whose longest proper Lyndon prefix is $112$ rather than $1$.
+
+We can still recover the standard prefix by testing every proper letter cut of the expansion. At an unaligned cut, the complete blocks are followed by a nonempty proper prefix $T$ of the next block. Since $T$ is itself an $r$-block, we may adjoin it to the alphabet and apply Proposition~\ref{prop:lyndon-substitution}. The admissible cut of greatest letter length gives the longest proper Lyndon prefix. Restricting to aligned cuts instead gives the expansion of the longest Lyndon block prefix.
+
+Let $F(\mathcal D)$ be the free Lie algebra on the block letters. The assignment of a block letter $D$ to $\br{D}\in\nhat$ extends to a Lie homomorphism. By Proposition~\ref{prop:costandard-substitution} and induction on block length, this homomorphism sends the Lyndon bracket of a block word $u$ to $\br{\varphi(u)}$. Only the bracketing is being identified here: we assert neither injectivity of the homomorphism nor standardness of every Lyndon expansion.
+
+\section{The coefficient-one grid in type \texorpdfstring{$C$}{C}}\label{sec:grid}
+
+For the type-$C$ calculation, assume that the least letter satisfies $1\leq r\leq n-1$, and put
+\[
+ s=n-r,\qquad H=2r-1,\qquad J=2s-1.
+\]
+Write the two arm words as
+\begin{align*}
+ A&=(a_1,\ldots,a_H)=(r-1,r-2,\ldots,1,0,1,\ldots,r-1),\\
+ B&=(b_1,\ldots,b_J)=(r+1,r+2,\ldots,n,n-1,\ldots,r+1).
+\end{align*}
+Thus $a_r=0$ and $b_s=n$ (if $r=1$ or $s=1$, that arm consists only of its endpoint). For $0\leq p\leq H$ and $0\leq q\leq J$, put
+\[
+ d_{p,q}=\alpha_r+\sum_{i=1}^p\alpha_{a_i}
+                         +\sum_{j=1}^q\alpha_{b_j}.
+\]
+
+\begin{proposition}\label{prop:grid-roots}
+The degrees $d_{p,q}$ are exactly the positive real roots with $\alpha_r$-coefficient one. They are pairwise distinct, and there are $4rs$ of them. Their finite projections are
+\[
+ \Prj d_{p,q}=x_p+z_q,
+\]
+where
+\[
+ x_p=\begin{cases}
+ e_{r-p},&0\leq p<r,\\
+ -e_{p-r+1},&r\leq p\leq H,
+ \end{cases}
+ \qquad
+ z_q=\begin{cases}
+ -e_{r+1+q},&0\leq q<s,\\
+ e_{2n-r-q},&s\leq q\leq J.
+ \end{cases}
+\]
+\end{proposition}
+\begin{proof}
+The first $r-1$ additions along the left arm move $e_r$ to $e_1$, after which $\alpha_0=\delta-2e_1$ changes the finite coordinate to $-e_1$ and adds one $\delta$. The return arm moves it to $-e_r$. On the right, the outward arm moves $-e_{r+1}$ to $-e_n$, the addition of $\alpha_n$ changes it to $e_n$, and the return arm ends at $e_{r+1}$. These are the displayed projections, and each $d_{p,q}$ is a positive real root.
+
+The projections range once over
+\[
+ \{\pm e_a\pm e_b:1\leq a\leq r<b\leq n\}.
+\]
+Thus they are distinct. The finite positive roots with $\alpha_r$-coefficient one are exactly the short roots crossing the cut (long roots have coefficient zero or two), so Theorem~\ref{thm:finite-blocks} with $m=2$ exhausts the possibilities.
+\end{proof}
+
+\begin{proposition}\label{prop:grid-complement}
+For all grid indices,
+\[
+ \delta-d_{p,q}=d_{H-p,J-q}.
+\]
+Moreover, coefficientwise comparison in the simple-root basis satisfies
+\[
+ d_{u,v}\leq d_{p,q}\quad\Longleftrightarrow\quad u\leq p\text{ and }v\leq q.
+\]
+\end{proposition}
+\begin{proof}
+The full arms sum to $\delta-2\alpha_r$. By palindromicity, each terminal arm segment has the same multiset of letters as the initial segment of that length, giving the complement formula. If $u\leq p$ and $v\leq q$, adding the intervening arm letters gives coefficientwise comparison. Conversely, summing coefficients separately on the two arms gives $u\leq p$ and $v\leq q$.
+\end{proof}
+
+Put $X_{p,q}=\SL(d_{p,q})$. We can construct these words directly from the grid predecessors, without considering general root decompositions.
+
+\begin{proposition}\label{prop:grid-shuffle}
+The grid words satisfy $X_{0,0}=r$ and
+\begin{equation}\label{eq:grid-recursion}
+ X_{p,q}=\max\bigl(
+ \{X_{p-1,q}a_p:p>0\}\cup
+ \{X_{p,q-1}b_q:q>0\}\bigr)
+\end{equation}
+when $(p,q)\ne(0,0)$. Equivalently,
+\[
+ X_{p,q}=rG(A[1:p],B[1:q]),
+\]
+where $G$ is the lexicographically greatest shuffle preserving the order in each arm. The shuffle is obtained by taking the larger available head. In particular, $X_{p,q}$ strictly increases when either coordinate increases and the other is fixed.
+\end{proposition}
+\begin{proof}
+Deleting the final letter of $X_{p,q}$ leaves a Lyndon prefix, since its first letter is still the unique $r$. By factor closure, this prefix is standard and has a real grid degree immediately below $d_{p,q}$. Proposition~\ref{prop:grid-complement} then identifies the deleted letter as $a_p$ or $b_q$, giving the upper bound in \eqref{eq:grid-recursion}.
+
+Conversely, each displayed predecessor has real degree and becomes $d_{p,q}$ on adding the indicated simple root, so the corresponding root-space bracket is nonzero. The predecessor begins with the least letter and is thus smaller than the appended letter. Both candidates are admitted by the Leclerc recursion, proving the reverse inequality.
+
+Every shuffle ends in a final arm letter, so the greatest shuffle satisfies the same recursion. Its greedy construction always takes the larger available head (the heads cannot tie because the arm alphabets are disjoint). To see monotonicity, append the new arm letter to a shuffle for the smaller grid point. This gives a proper extension of the old word, and the greatest shuffle at the enlarged point is at least as large.
+\end{proof}
+
+This monotonicity concerns word order, not prefix inclusion. A prefix relation will require a common initial greedy-shuffle history.
+
+\section{Complementary pairs and standard prefixes}\label{sec:pairs}
+
+Since $H$ and $J$ are odd, the reflection $(p,q)\mapsto(H-p,J-q)$ has no fixed point. Each of its $2rs$ orbits gives two complementary words, which we order as $U<V$ and concatenate to obtain the candidate $UV$.
+
+\begin{proposition}\label{prop:delta-candidates}
+The degree-$\delta$ standard Lyndon words are obtained by scanning these complementary-pair candidates in decreasing order and retaining independent brackets. For every candidate, its costandard factorization is $U\mid V$, and $\br{UV}$ is a nonzero coroot direction times $t$.
+\end{proposition}
+\begin{proof}
+Theorem~\ref{thm:finite-blocks} gives two real blocks in every standard word of degree $\delta$. By Proposition~\ref{prop:lyndon-substitution}, they occur in the order $U<V$ and have complementary degrees, so every selected word appears on the list. Conversely, the concatenation of each pair is Lyndon, and Proposition~\ref{prop:costandard-substitution} gives
+\[
+ \br{UV}=[\br{U},\br{V}].
+\]
+This bracket is a nonzero coroot direction times $t$, since the finite projections are opposite. An omitted nonstandard word is spanned by earlier standard words. All of those words occur on the list, so omitting the others does not change the greedy selections.
+\end{proof}
+
+The standard prefix can extend into $V$. Its position is determined by the following comparison.
+
+\begin{proposition}\label{prop:prefix-criterion}
+For two $r$-blocks $U<V$,
+\begin{equation}\label{eq:prefix-criterion}
+ (UV)^{\ls}=U\quad\Longleftrightarrow\quad V^{-}\leq U.
+\end{equation}
+If $U<V^{-}$, then
+\begin{equation}\label{eq:extended-prefix}
+ (UV)^{\ls}=UV^{-}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Since $V$ exceeds another $r$-block, it has at least two letters. Every nonempty prefix $T$ of $V$ is itself an $r$-block, and $UT$ is Lyndon precisely when $U<T$, by Proposition~\ref{prop:lyndon-substitution}. The nonempty proper prefixes of $V$ are nested and have greatest element $V^{-}$. Thus either none extends $U$ to a Lyndon prefix, or $UV^{-}$ is Lyndon and has the greatest possible proper length.
+\end{proof}
+
+\begin{lemma}\label{lem:prefix-sandwich}
+If $T=V^{-}$ and $T\leq U<V$, then $T$ is a prefix of $U$.
+\end{lemma}
+\begin{proof}
+A proper-prefix relation from $U$ to $T$ would give $U<T$, contrary to the hypothesis. An internal difference between $T$ and $U$ would give $T<U$ and hence $V<U$, also a contradiction. Thus $T=U$ or $T$ is a proper prefix of $U$.
+\end{proof}
+
+\section{The unique exceptional pair}\label{sec:seam}
+
+Call a complementary pair $U<V$ \emph{exceptional} when $V^{-}\leq U$. We locate it by restricting the possible grid states and then following one greedy-shuffle path.
+
+Suppose that $V=X_{p,q}$ and $U=X_{H-p,J-q}$. If the last letter of $V$ comes from the left arm, then $V^{-}$ has degree $d_{p-1,q}$. Lemma~\ref{lem:prefix-sandwich} and coefficientwise comparison give
+\[
+ p-1\leq H-p,\qquad q\leq J-q.
+\]
+Thus $p\leq r$ and $q\leq s-1$, while $p\leq r-1$ would give $V<U$ by coordinate monotonicity. We must therefore have
+\begin{equation}\label{eq:left-seam}
+ p=r,\qquad 0\leq q\leq s-1,\qquad\text{the last letter of $V$ is }0.
+\end{equation}
+The same argument for a last letter on the right gives
+\begin{equation}\label{eq:right-seam}
+ q=s,\qquad 0\leq p\leq r-1,\qquad\text{the last letter of $V$ is }n.
+\end{equation}
+Thus at most $r+s=n$ oriented pairs can lie on the two central seams.
+
+To identify the exceptional pair, greedily shuffle the initial half-arms $A[1:r]$ and $B[1:s]$ until just before the first endpoint $0$ or $n$ is emitted. Write $H_*$ for the emitted word and put $T=rH_*$. If that endpoint is $0$, with $q$ right-arm letters already emitted, set
+\begin{equation}\label{eq:left-exception}
+ V_*=X_{r,q},\qquad U_*=X_{r-1,J-q},\qquad 0\leq q\leq s-1.
+\end{equation}
+If the first endpoint is $n$ and $p$ left-arm letters have been emitted, define
+\begin{equation}\label{eq:right-exception}
+ V_*=X_{p,s},\qquad U_*=X_{H-p,s-1},\qquad 0\leq p\leq r-1.
+\end{equation}
+
+\begin{lemma}\label{lem:exception-exists}
+The pair $U_*<V_*$ is exceptional. More precisely, $V_*^{-}=T$ is a prefix of $U_*$.
+\end{lemma}
+\begin{proof}
+Suppose that the first endpoint is $0$. At the stopping point, both $0$ and $b_{q+1}$ are available and
+\[
+ 0>b_{q+1}.
+\]
+We may truncate the right arm after $q$ letters without changing any earlier choice, since the next right letter was never chosen before $0$. Hence $V_*=T0$.
+
+For $U_*$, the left arm ends before $0$ and the right arm continues to $J-q\geq s>q$. Its shuffle therefore follows the same choices through $T$, after which the next letter of $U_*$ is $b_{q+1}<0$. This gives the prefix assertion and $U_*<V_*$. Interchanging the arms gives the case where $n$ is emitted first.
+\end{proof}
+
+\begin{lemma}\label{lem:exception-unique}
+Every exceptional pair equals $U_*<V_*$.
+\end{lemma}
+\begin{proof}
+Consider a pair on the left seam. Write
+\[
+ V=X_{r,q}=T0,\qquad U=X_{r-1,J-q}.
+\]
+By Lemma~\ref{lem:prefix-sandwich}, $T$ is a prefix of $U$. Its next right-arm letter is $b_{q+1}$, so the comparison $U<V$ implies $b_{q+1}<0$.
+
+We compare the common prefix $T$ with the half-arm shuffle. A left letter of $T$ defeats the available right head in the shuffle for $U$, where that head is present because the right prefix is longer. A right letter defeats the available left head in the shuffle for $V$, whose left arm still contains $0$. The half-arm shuffle thus follows $T$ and then chooses $0$, since $0>b_{q+1}$. Its first-endpoint rule returns exactly this $q$ and this pair.
+
+For a pair on the right seam, the same argument interchanges the arms and replaces $0$ by $n$. By \eqref{eq:left-seam}--\eqref{eq:right-seam}, these are all the possible exceptional pairs.
+\end{proof}
+
+\begin{lemma}\label{lem:exception-maximal}
+The candidate $U_*V_*$ is strictly larger than every other complementary-pair candidate.
+\end{lemma}
+\begin{proof}
+Suppose that the first endpoint is $0$, with $q$ as in \eqref{eq:left-exception}. Compare any grid shuffle with the path producing $T$. A first departure can occur only because the arm with the chosen head has been exhausted: the word then ends at a proper prefix of $T$, or takes the smaller head on the other arm. Hence a grid word either begins with $T$ or is smaller than $T$, and in the latter case is smaller than $U_*$.
+
+Now take complementary blocks both beginning with $T$. Each uses at least $r-1$ left letters, so their left counts, which sum to $2r-1$, are $r-1$ and $r$. Each also uses at least $q$ right letters. The block with left count $r-1$ therefore has right count at most $J-q$ and is at most $U_*$ by monotonicity. Equality identifies it as $U_*$ and its complement as $V_*$. Every other pair has smaller first block than $U_*$, which gives the concatenation comparison by Proposition~\ref{prop:embedding}.
+
+If $n$ is the first endpoint, use right counts $s-1,s$ instead and bound the left count of the block with right count $s-1$.
+\end{proof}
+
+\begin{theorem}[Central-seam theorem]\label{thm:central-seam}
+There is exactly one exceptional complementary pair. It is given by the first-endpoint rule \eqref{eq:left-exception}--\eqref{eq:right-exception}, and
+\[
+ \SL_1(\delta)=U_*V_*.
+\]
+Its standard and costandard prefixes both equal $U_*$. For every $i>1$, the costandard factorization $\SL_i(\delta)=U_iV_i$ satisfies
+\begin{equation}\label{eq:noninitial-prefix}
+ \SL_i^{\ls}(\delta)=U_iV_i^{-},
+ \qquad
+ \SL_i^{\rs}(\delta)=\text{the final letter of }V_i.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Existence and uniqueness follow from Lemmas~\ref{lem:exception-exists} and \ref{lem:exception-unique}. By Lemma~\ref{lem:exception-maximal} and Proposition~\ref{prop:delta-candidates}, the nonzero bracket of $U_*V_*$ is selected first. Applying Proposition~\ref{prop:prefix-criterion} gives the stated standard prefixes.
+\end{proof}
+
+The boundary cases $r=1$, $s=1$, and $r=s=1$ are included: a half-arm may consist of one letter, but the first-endpoint rule still compares distinct available letters. The argument never commutes letters between the arms.
+
+\section{Imaginary flags and signed incidence graphs}\label{sec:flags}
+
+For each selected word $\SL_i(\delta)=U_iV_i$, let $v_i$ be a primitive integral vector in its Cartan-bracket direction. The finite root $\Prj\deg U_i$ is short and crosses the cut at $r$, so we can choose
+\[
+ v_i=e_a-\sigma e_b,
+ \qquad 1\leq a\leq r<b\leq n,
+ \qquad \sigma\in\{1,-1\}.
+\]
+The overall sign of a column is immaterial. Put
+\[
+ V_i=\Span_{\Q}(v_1,\ldots,v_i).
+\]
+Then $S_i^1=V_it$ after extension of scalars. We encode the first $i$ columns by a signed bipartite multigraph $G_i$: the column $e_a-\sigma e_b$ gives an edge from $a$ to $b$ of sign $\sigma$. Connectivity will always refer to the used vertices, with isolated unused vertices disregarded.
+
+\begin{proposition}\label{prop:flag-connected}
+For every $1\leq i\leq n$, the graph $G_i$ is connected on its used vertices.
+\end{proposition}
+\begin{proof}
+The graph begins with one edge. Suppose that connectivity first fails at step $i>1$. As $G_{i-1}$ is connected, both endpoints $a,b$ of the new edge lie outside its used vertex set $S$, so
+\begin{equation}\label{eq:disconnected-layer}
+ V_i=V_{i-1}\oplus\Q(e_a-\sigma e_b),
+ \qquad V_{i-1}\subseteq\Q^S.
+\end{equation}
+By Theorem~\ref{thm:central-seam}, the standard factorization has the form
+\[
+ \SL_i(\delta)=L_i c
+\]
+with $c\ne r$ a single letter. The factorization theorem for imaginary flags \cite[Proposition~3.10 and Corollary~3.11]{ETC} gives
+\[
+ [\br{L_i},E_c]\in S_i^1\setminus S_{i-1}^1.
+\]
+This bracket has Cartan direction $\alpha_c^{\vee}$. For $c=0$ or $c=n$ it is supported at a single endpoint; for an internal $c\ne r$ it is supported on adjacent coordinates on the same side of the cut at $r$.
+
+But every vector in $V_i\setminus V_{i-1}$ has nonzero coordinates at both $a$ and $b$ by \eqref{eq:disconnected-layer}. These coordinates lie on opposite sides of the cut, contradicting the support of the simple coroot direction.
+\end{proof}
+
+We use the usual signed-incidence rank calculation. A connected signed graph is \emph{balanced} if every cycle has edge-sign product $1$, and \emph{unbalanced} otherwise.
+
+\begin{lemma}\label{lem:signed-rank}
+For a connected signed graph on $t$ vertices, the matrix with columns $e_a-\sigma e_b$ has rank $t-1$ in the balanced case and rank $t$ in the unbalanced case.
+\end{lemma}
+\begin{proof}
+The left-kernel equations are $x_a=\sigma x_b$ along the edges. Once one coordinate is fixed, connectivity determines all the others. If every cycle product is $1$, that coordinate is free and the kernel is one-dimensional. An unbalanced cycle forces it to equal its negative, hence to vanish in characteristic zero, so the kernel is trivial.
+\end{proof}
+
+For each flag layer, define the finite root subsystem
+\[
+ \Phi_i=\{\alpha\in\Phi(C_n):\alpha^{\vee}\in V_i\}.
+\]
+Roots and coroots have the same directions, so membership can equally be tested with $\alpha$.
+
+\begin{theorem}\label{thm:flag-types}
+For an internal least letter, there is an integer $2\leq t\leq n$ such that the successive root subsystems $\Phi_i$ have types
+\[
+ A_1,A_2,\ldots,A_{t-1},C_t,C_{t+1},\ldots,C_n.
+\]
+In particular, every $\Phi_i$ is irreducible. The connectivity property for the imaginary Cartan flags holds for every alphabet order in type $C_n^{(1)}$.
+\end{theorem}
+\begin{proof}
+The columns are independent, and the graph is connected by Proposition~\ref{prop:flag-connected}. A connected graph on $u$ vertices has at least $u-1$ edges, while Lemma~\ref{lem:signed-rank} permits at most $u$ independent columns. Thus the graph is either a tree or an unbalanced unicyclic graph.
+
+For a tree, we may change coordinate signs along paths from a fixed vertex so that every column is a coordinate difference. These columns span the coordinate-sum-zero hyperplane on the used vertices, whose roots are precisely the differences. This gives type $A_{u-1}$.
+
+The first cycle is unbalanced, so the columns then span the full coordinate space on its $t$ vertices and give the subsystem $C_t$. Each subsequent independent edge introduces one new vertex: an edge between old vertices is dependent, and one between two new vertices violates connectivity. The later subsystems are therefore $C_{t+1},C_{t+2},\ldots$. The final rank $n$ forces a cycle to occur and all $n$ vertices to be used, while bipartiteness gives $t\geq2$.
+
+This treats internal least letters. For a least letter $0$ or $n$, connectivity is \cite[Lemma~4.31]{ETC}, so every alphabet order is covered.
+\end{proof}
+
+The implication from a discrepancy of standard and costandard prefixes to flag connectivity is also given in \cite[Proposition~4.28]{ETC}. Here the support calculation proves it directly in type $C$ (the signed-graph model and its rank formulas are classical; see \cite{Zas,ACH}).
+
+\begin{theorem}\label{thm:column-lattice}
+For an internal least letter, let $M$ be the $n\times n$ matrix with primitive columns $v_1,\ldots,v_n$. Then
+\[
+ |\det M|=2,
+ \qquad
+ M\Z^n=\left\{z\in\Z^n:\sum_{a=1}^n z_a\equiv0\pmod2\right\}.
+\]
+\end{theorem}
+\begin{proof}
+The final graph is connected, unbalanced, and unicyclic. A determinant expansion at a leaf removes a row and a column with entry $\pm1$, so successive expansions reduce to the cycle. This includes a two-edge cycle of parallel edges, and in either case its determinant is, up to sign,
+\[
+ 1-\prod_{e\text{ on the cycle}}\sigma_e=2.
+\]
+Every column has even coordinate sum, giving containment in the parity lattice. Since both lattices have index two in $\Z^n$, the containment is equality.
+\end{proof}
+
+Primitivity is essential in this statement: nonunit factors in the actual Lyndon brackets can change the determinant of the unnormalized coefficient matrix.
+
+\section{The parent and preperiod in rank two}\label{sec:ranktwo}
+
+The smallest internal-minimum example illustrates the insertion phase and the distinction between period and preperiod before the general degree-$2\delta$ argument.
+
+Take $n=2$, $r=1$, and $1<0<2$. The grid words are
+\[
+ 1,\quad10,\quad12,\quad120,
+\]
+and the complementary-pair candidates, in decreasing order, are
+\[
+ 1012=(10)(12),\qquad1120=(1)(120).
+\]
+There are exactly three Lyndon words of degree $\delta=\alpha_0+2\alpha_1+\alpha_2$:
+\[
+ 1012,\qquad1120,\qquad1102.
+\]
+A Lyndon word here begins with $1$. Among the six permutations of the remaining letters, those ending in $1$ fail the suffix test, and $1210$ exceeds its suffix $10$. The three displayed words satisfy the test.
+
+In the ordered symplectic basis $(e_1,e_2,e_{-1},e_{-2})$, choose
+\[
+ E_1=E_{12}-E_{43},\qquad E_2=E_{24},\qquad E_0=tE_{31},
+\]
+where $E_{ab}$ are matrix units. Direct multiplication gives
+\begin{align*}
+ \br{10}&=-t(E_{41}+E_{32}),&
+ \br{12}&=E_{14}+E_{23},\\
+ \br{112}&=2E_{13},&
+ \br{1012}&=t\diag(1,1,-1,-1),\\
+ \br{1120}&=t\diag(1,-1,-1,1),&
+ \br{1102}&=0.
+\end{align*}
+In the last calculation, the costandard suffix of $1102$ is $102$, with zero bracket since $[E_0,E_2]=0$. The two nonzero diagonal directions are independent, giving
+\begin{equation}\label{eq:c2-words}
+ \SL_1(\delta)=1012,\qquad\SL_2(\delta)=1120.
+\end{equation}
+The longest proper Lyndon prefix of $1120$ is $112$, so
+\begin{equation}\label{eq:c2-factors}
+ U=1,\qquad P=12,\qquad R=0,\qquad L_2=UP=112.
+\end{equation}
+The complement of $P$ is $Q=10$. Thus the parent is $QP=1012$, not $PQ=1210$.
+
+We can identify the increasing-chain preperiod separately from the following list of shortest positive lifts and their standard words.
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Finite projection & Shortest affine degree & Word\\
+\midrule
+$e_1-e_2$ & $\alpha_1$ & $1$\\
+$2e_2$ & $\alpha_2$ & $2$\\
+$e_1+e_2$ & $\alpha_1+\alpha_2$ & $12$\\
+$2e_1$ & $2\alpha_1+\alpha_2$ & $112$\\
+$-2e_1$ & $\alpha_0$ & $0$\\
+$-e_1-e_2$ & $\alpha_0+\alpha_1$ & $10$\\
+$-e_1+e_2$ & $\alpha_0+\alpha_1+\alpha_2$ & $120$\\
+$-2e_2$ & $\alpha_0+2\alpha_1$ & $110$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here a real-root chain is \emph{increasing} when its standard words increase under addition of $\delta$. The increasing chains form the positive system
+\[
+ \{e_1-e_2,-2e_2,-e_1-e_2,2e_1\},
+\]
+with simple roots
+\[
+ \beta_1=-e_1-e_2,\qquad\beta_2=2e_1.
+\]
+The remaining positive roots are $\beta_1+\beta_2$ and $2\beta_1+\beta_2$. Since $V_1=\Q(e_1+e_2)$, the coroot directions of $\beta_1,\beta_2$ first enter flag layers one and two, respectively. The first imaginary direction acts nontrivially on $\g_{\beta_2}$, because
+\[
+ (2e_1,e_1+e_2)=2\ne0.
+\]
+Thus, in the notation of \cite{ETC}, $M_1(\beta_2)=(\delta,1)$.
+
+The degree of $L_2$ projects to the simple increasing root $\beta_2$. Connectivity and \cite[Definition~6.10 and Corollary~6.15]{ETC} give the preperiod
+\begin{equation}\label{eq:c2-preperiod}
+ y_2=L_2=112.
+\end{equation}
+One can also check directly that no real append is allowed. The decreasing roots are
+\[
+ -e_1+e_2,\quad2e_2,\quad e_1+e_2,\quad-2e_1.
+\]
+Adding $2e_1$ gives the decreasing root $e_1+e_2$, two nonroots, and zero, respectively. None is an increasing root with the required flag index. The maximal-append characterization \cite[Lemma~6.9]{ETC} excludes the need to test increasing real appends separately.
+
+Thus $y_2$ differs from $(UP)Q=11210$, in both length (three rather than five) and degree ($2\alpha_1+\alpha_2$ rather than $\alpha_0+3\alpha_1+\alpha_2$). The period is $QP=1012$, and Theorem~\ref{thm:main} gives
+\[
+ \SL_2(k\delta)=112(1012)^{k-1}0.
+\]
+In the eventual-prefix notation of \cite[Lemma~6.45]{ETC}, the terminal prefix is empty and $\kappa=1$, since $|y_2|=3<h=4$.
+
+\section{The degree-\texorpdfstring{$2\delta$}{2delta} calculation and periodicity}\label{sec:degree-two}
+
+Fix an internal least letter $r$ and an index $i>1$. By Theorem~\ref{thm:central-seam}, we may write
+\begin{equation}\label{eq:two-setup}
+ \SL_i(\delta)=UV=UPa,
+ \qquad P=V^{-},\qquad L_i=UP,
+ \qquad U<P<V,
+\end{equation}
+where $a\ne r$ is a single letter and $|L_i|=h-1$. The words $U,P,V$ are real grid blocks. Let $Q$ be the unique grid block satisfying
+\begin{equation}\label{eq:Q-degree}
+ \deg Q=\delta-\deg P=\deg U+\alpha_a.
+\end{equation}
+By the grid recursion, $Q\geq Ua>U$. We also have $P\ne Q$, since otherwise $2\deg P=\delta$, contradicting the odd $\alpha_0$-coefficient of $\delta$.
+
+We will establish
+\begin{equation}\label{eq:two-target}
+ \SL_i(2\delta)=UPQPa,
+ \qquad
+ \SL_i^{\ls}(2\delta)=UPQP.
+\end{equation}
+For the upper bound, we compare reflected shuffles. For the reverse bound, we evaluate the proposed word in the $i$th flag quotient; these two steps precede the identification of its parent.
+
+\subsection{Chain and flag inputs}\label{subsec:inputs}
+For a finite root $\beta$, let $H_\beta$ denote its coroot direction. For a real affine root $\alpha$, write $m_1(\alpha)=(\delta,j)$ when
+\[
+ H_{\Prj\alpha}t\in S_j^1\setminus S_{j-1}^1.
+\]
+Write $M_1(\alpha)=(\delta,j)$ if $j$ is the first index at which $\br{\SL_j(\delta)}$ acts nontrivially on the real root space of $\alpha$. Both indices depend only on the finite projection, and flag stability gives the same integer labels in degree $k\delta$. This agrees with \cite[Definitions~3.2--3.3]{ETC}.
+
+The real-root chain $\ch(\alpha)$ consists of the positive real roots with finite projection $\Prj\alpha$. Its standard words are strictly increasing or strictly decreasing under addition of $\delta$ \cite[Proposition~3.16]{ETC}. We need two consequences for prefixes. Every nonempty proper Lyndon prefix of an imaginary standard word is real and belongs to an increasing chain \cite[Corollary~4.24(3)]{ETC}; if a real standard word in such a chain begins with $L_i$, its degree has $m_1$-index $i$ \cite[Lemma~6.7]{ETC}. For every $k\geq1$, the prefix $\SL_i^{\ls}(k\delta)$ is the greatest real standard word of a degree $\alpha$ satisfying
+\[
+ |\alpha|<kh,\qquad \ch(\alpha)\text{ is increasing},
+ \qquad m_1(\alpha)=(\delta,i)
+\]
+by \cite[Lemma~6.14]{ETC}. We also have
+\[
+ \SL_i(\delta)>\SL_i(2\delta)>\SL_i(3\delta)>\cdots
+\]
+by \cite[Lemma~3.21]{ETC}.
+
+In particular, $L_i$ is increasing and has $m_1$-index $i$ by \cite[Corollary~3.11]{ETC}. These chain and flag results do not require the parent identification or the degree-$2\delta$ formula.
+
+\subsection{A reflected shuffle comparison}\label{subsec:exchange}
+Let $A=a_1\cdots a_H$ and $B=b_1\cdots b_J$ be words over disjoint alphabets, and put
+\[
+ F(p,q)=G(A[1:p],B[1:q]).
+\]
+The arm letters may repeat, and empty prefixes are allowed. Since the arm alphabets are disjoint, $F$ is obtained by taking the larger available head and is strictly increasing in either coordinate.
+
+\begin{lemma}[Truncation]\label{lem:truncation}
+Suppose that $p\geq1$ and
+\[
+ F(p,q)=F(p-1,q)a_p.
+\]
+Then, for every $0\leq t\leq q$,
+\[
+ F(p,t)=F(p-1,t)a_p.
+\]
+\end{lemma}
+\begin{proof}
+Run the two greedy shuffles together until the right prefix of length $t$ is exhausted. Their choices agree up to that point. If the shorter shuffle chose $a_p$ while a right letter remained, the longer shuffle would make the same choice, contrary to its final letter being $a_p$. Thus $a_p$ is last in the shorter shuffle as well. Removing this final left letter changes none of the earlier choices, giving the claimed factorization (for $t=0$, this is just the factorization of the left prefix).
+\end{proof}
+
+\begin{lemma}[Simultaneous extension]\label{lem:extension}
+Let $1\leq e,d\leq H$, $0\leq q,v\leq J$, and suppose that
+\begin{equation}\label{eq:extension-hyp}
+ a_e=a_d=a,
+ \qquad F(e,q)=F(e-1,q)a,
+ \qquad F(e-1,q)>F(d-1,v).
+\end{equation}
+For every $0\leq t\leq J$,
+\begin{equation}\label{eq:extension-conclusion}
+ F(e-1,t)\leq F(d-1,v)
+ \quad\Longrightarrow\quad
+ F(e,t)\leq F(d,v).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put $S=F(e-1,t)$ and $T=F(d-1,v)$, and suppose that $S\leq T$. By the strict inequality in \eqref{eq:extension-hyp} and coordinate monotonicity, we have $t<q$. The truncation lemma~\ref{lem:truncation} gives $F(e,t)=Sa$.
+
+When $e=d$, monotonicity gives $t\leq v$ and proves the assertion. We may thus assume $e\ne d$. The distinct left-arm counts give $S\ne T$, hence $S<T$. If the comparison is decided inside the words, then $Sa<Ta$. Otherwise $S$ is a proper prefix of $T$, and its smaller left count gives $e<d$. After $S$, the next left head available to the shuffle for $T$ is $a_e=a$, so the next letter chosen is at least $a$. Hence $Sa\leq T<Ta$.
+
+We have $Sa\leq Ta$ in either case. Since $a_d=a$, appending $a$ to $T$ gives an admissible shuffle of $A[1:d]$ and $B[1:v]$, and therefore $F(e,t)=Sa\leq Ta\leq F(d,v)$.
+\end{proof}
+
+We now use the palindromic arms to place this comparison at complementary grid points.
+
+\begin{corollary}[Reflected extension]\label{cor:reflected}
+Suppose that $U=X_{u,v}$, put $p=H-u$ and $q=J-v$, and assume that
+\[
+ V=X_{p,q}=Pa,\qquad P=X_{p-1,q}>U,
+ \qquad a=a_p.
+\]
+Then $Q=X_{u+1,v}$ and, for every $0\leq t\leq J$,
+\begin{equation}\label{eq:reflected}
+ X_{p-1,t}\leq U\quad\Longrightarrow\quad X_{p,t}\leq Q.
+\end{equation}
+There is an analogous assertion with the two arms interchanged when $a$ is a right-arm letter.
+\end{corollary}
+\begin{proof}
+By complementation, $Q=X_{u+1,v}$. Palindromicity of the left arm gives
+\[
+ a_p=a_{H-u}=a_{u+1}.
+\]
+Delete the initial $r$ and apply Lemma~\ref{lem:extension} with $e=p$ and $d=u+1$. Its strict inequality is $P>U$, and its final-letter hypothesis is the factorization $V=Pa$. Restoring $r$ gives \eqref{eq:reflected}. The right-arm assertion follows by interchanging $A$ and $B$.
+\end{proof}
+
+\subsection{The first two blocks are forced}\label{subsec:first-blocks}
+
+\begin{lemma}\label{lem:first-blocks}
+For every $k\geq2$, the first two complete $r$-blocks of $\SL_i(k\delta)$ are $U$ and $P$.
+\end{lemma}
+\begin{proof}
+The roots $k\delta-\alpha_a$ and $\deg L_i=\delta-\alpha_a$ belong to the same increasing chain and have the same $m_1$-index. Applying the maximal-prefix characterization and both monotonicity statements from Section~\ref{subsec:inputs}, we obtain
+\begin{equation}\label{eq:prefix-interval}
+ L_i<\SL(k\delta-\alpha_a)
+ \leq\SL_i^{\ls}(k\delta)
+ <\SL_i(k\delta)<\SL_i(\delta)=L_i a.
+\end{equation}
+A word strictly between $L_i$ and $L_i a$ must begin with $L_i$, since a difference before the end of $L_i$ would place it below both or above both. Thus $\SL_i(k\delta)$ begins with $UP$.
+
+Let $b$ be the next letter. We claim that $b=r$. Otherwise $L_i b$ is Lyndon by Proposition~\ref{prop:lyndon-substitution}: its two blocks are $U$ and $Pb$, with $U<P<Pb$. Factor closure then makes it standard. For $b\ne a$, its degree is
+\[
+ \delta-\alpha_a+\alpha_b.
+\]
+If $a,b$ are finite labels, the projection $\alpha_b-\alpha_a$ has mixed signs in the simple-root basis and is not a root. At $a=0$ the projection is $\theta+\alpha_b$, and at $b=0$ it is $-(\theta+\alpha_a)$, neither of which is a root. The degree is nonimaginary in each case, so standardness is impossible. For $b=a$, we would instead have an imaginary proper Lyndon prefix, contrary to \cite[Corollary~4.24(3)]{ETC}. Hence $b=r$, and the second complete block is $P$.
+\end{proof}
+
+\subsection{An upper bound for the third block}\label{subsec:third-block}
+
+In degree $2\delta$ there are four complete $r$-blocks. By Lemma~\ref{lem:first-blocks}, we may write
+\begin{equation}\label{eq:four-block-word}
+ \SL_i(2\delta)=UPST.
+\end{equation}
+
+\begin{lemma}\label{lem:third-block}
+The third block in \eqref{eq:four-block-word} satisfies $S\leq Q$.
+\end{lemma}
+\begin{proof}
+Suppose for a contradiction that $S>Q$. Since $P>U$ and $Q>U$, the prefix $UPS$ is Lyndon. It is therefore real, standard, and increasing, and its initial segment $L_i=UP$ gives $m_1(\deg UPS)=(\delta,i)$.
+
+We first treat a left-arm letter $a$. Write
+\[
+ U=X_{u,v},\quad p=H-u,\quad q=J-v,
+ \quad P=X_{p-1,q},\quad Q=X_{u+1,v},\quad S=X_{\ell,t}.
+\]
+Put $x=x_u$, $x'=x_{u+1}$, and $\gamma=x'-x=\Prj\alpha_a$. As $P$ complements $Q$, we have
+\begin{equation}\label{eq:third-projection}
+ \Prj\deg(UPS)=x_\ell+x-x'+z_t.
+\end{equation}
+The right component $z_t$ is a single signed coordinate. For \eqref{eq:third-projection} to be a type-$C$ root, its left component must also be a single signed coordinate.
+
+For an internal left-arm letter, $x$ and $x'$ have distinct coordinate supports. The only possible cancellations are $x_\ell=x'$ and $x_\ell=-x$. At $a=0$ we have $x'=-x$, so the left component is $x_\ell+2x$ and the only possibility is $x_\ell=-x=x'$. Thus in all cases
+\begin{equation}\label{eq:third-rows}
+ \ell=u+1\quad\text{or}\quad\ell=p.
+\end{equation}
+The two rows coincide at the long endpoint when appropriate.
+
+In the first row, $\deg S-\alpha_a=d_{u,t}$; in the second, it is $d_{p-1,t}$. Call this grid root $R$, so that
+\[
+ \deg(UPS)=\delta+R.
+\]
+By chain invariance, $R$ is increasing and has $m_1$-index $i$. A grid root has height less than $h$, so the maximal-prefix characterization at $k=1$ gives
+\begin{equation}\label{eq:third-short-bound}
+ X_R\leq L_i=UP.
+\end{equation}
+For a single block, the inequality $X_R\leq UP$ is equivalent to $X_R\leq U$, by Proposition~\ref{prop:embedding}.
+
+If $\ell=u+1$, we have $X_{u,t}\leq X_{u,v}$, which forces $t\leq v$ and hence
+\[
+ S=X_{u+1,t}\leq X_{u+1,v}=Q.
+\]
+If $\ell=p$, then $X_{p-1,t}\leq U$ and Corollary~\ref{cor:reflected} gives $S=X_{p,t}\leq Q$. Both alternatives contradict $S>Q$.
+
+For a right-arm letter, interchange the two coordinate sets and the two arms. The same cancellation restricts the column of $S$ to the successor column of $U$ or the reflected column of $V$. The first is handled by coordinate monotonicity, and the second by the right-arm assertion of Corollary~\ref{cor:reflected}. At $a=n$, the signed right coordinates are opposite, as the left coordinates were at $a=0$, so the endpoint gives the same contradiction.
+\end{proof}
+
+\begin{corollary}\label{cor:two-upper}
+For $Z=UPQV=UPQPa$,
+\begin{equation}\label{eq:two-upper}
+ \SL_i(2\delta)\leq Z.
+\end{equation}
+\end{corollary}
+\begin{proof}
+If $S<Q$, we compare at the third block using Proposition~\ref{prop:embedding}. If $S=Q$, the remaining degree is $\deg V$, and uniqueness of the real standard word gives $T=V$.
+\end{proof}
+
+\subsection{The bracket in the new flag layer}\label{subsec:bracket}
+
+The upper bound alone does not establish standardness. To obtain the reverse inequality, we compute the costandard bracket of $Z$ in the $i$th flag quotient. Put
+\[
+ \xi=\Prj\deg U,\quad \pi=\Prj\deg P,
+ \quad\eta=\Prj\deg Q,\quad\nu=\Prj\deg V,
+ \quad\gamma=\Prj\alpha_a.
+\]
+By complementation and \eqref{eq:Q-degree},
+\begin{equation}\label{eq:bracket-degrees}
+ \nu=-\xi,\qquad \pi=-\eta,\qquad \eta-\xi=\gamma,
+ \qquad \deg(UP)=\delta-\alpha_a,
+ \qquad \deg(QV)=\delta+\alpha_a.
+\end{equation}
+Since $U$ is smaller than each of $P,Q,V$, the word $Z$ is Lyndon. We can compute its costandard factorization in the block alphabet by Proposition~\ref{prop:costandard-substitution}.
+
+\begin{lemma}\label{lem:two-bracket}
+The word $Z=UPQPa$ satisfies
+\[
+ \br{Z}\in S_i^2\setminus S_{i-1}^2.
+\]
+\end{lemma}
+\begin{proof}
+There are three possible orders of $P,Q,V$.
+
+\smallskip\noindent
+\emph{Case $Q<P$.}
+We have $U<Q<P<V$. The longest proper Lyndon suffix is $QV$: the longer suffix $PQV$ is not Lyndon, since it exceeds its suffix beginning with $Q$. Thus
+\begin{equation}\label{eq:bracket-case-one}
+ \br{Z}=[\br{UP},[\br{Q},\br{V}]].
+\end{equation}
+Here $UP=L_i$ is real and standard, and the inner bracket is nonzero in the real degree $\delta+\alpha_a$. The outer bracket pairs opposite finite roots by \eqref{eq:bracket-degrees}, so it is a nonzero multiple of $H_\gamma t^2$.
+
+The standard factorization $\SL_i(\delta)=L_i a$ also gives
+\[
+ [\br{L_i},E_a]\in S_i^1\setminus S_{i-1}^1
+\]
+by \cite[Proposition~3.10]{ETC}. This bracket has direction $H_\gamma t$, so flag stability places \eqref{eq:bracket-case-one} in $S_i^2\setminus S_{i-1}^2$.
+
+\smallskip\noindent
+\emph{Case $P<Q<V$.}
+The longest proper Lyndon suffix is $PQV$, whose costandard factorization is $P\mid QV$. Hence
+\begin{equation}\label{eq:bracket-case-two}
+ \br{Z}=[\br{U},[\br{P},[\br{Q},\br{V}]]].
+\end{equation}
+The inner bracket is nonzero in degree $\delta+\alpha_a$. Bracketing with $P$ gives a nonzero vector of real degree $\delta+\deg V$, and then bracketing with $U$ gives a nonzero multiple of $H_\xi t^2$. The selected bracket $\br{UV}$ has direction $H_\xi t$, so flag stability gives the required layer.
+
+\smallskip\noindent
+\emph{Case $P<V<Q$.}
+The longest proper Lyndon suffix is again $PQV$, but now its costandard factorization is $PQ\mid V$. Thus
+\begin{equation}\label{eq:bracket-case-three}
+ \br{Z}=[\br{U},[[\br{P},\br{Q}],\br{V}]].
+\end{equation}
+The bracket $[\br{P},\br{Q}]$ is a nonzero multiple of $H_\pi t$. It acts nontrivially on $\br{V}$ precisely when
+\[
+ (\pi,\nu)=(\eta,\xi)\ne0.
+\]
+For an internal letter $a$, the roots $\gamma,\xi,\eta$ are all short. Taking squared lengths in $\eta-\xi=\gamma$ gives
+\[
+ 2=2+2-2(\eta,\xi),
+\]
+so $(\eta,\xi)=1$.
+
+The endpoints cannot occur with this word order. Indeed, at $a=0$ we have $p=r$ and $u=r-1$, and
+\[
+ P=X_{r-1,q}>U=X_{r-1,v}
+\]
+implies $q>v$. Hence
+\[
+ Q=X_{r,v}<X_{r,q}=V,
+\]
+contrary to $V<Q$. At $a=n$, the same argument interchanges rows and columns. Thus \eqref{eq:bracket-case-three} is always nonzero in this case, and its outer bracket is a nonzero multiple of $H_\xi t^2$ in the required layer.
+
+The remaining equalities are impossible: $Q=V$ would give $P=U$ by complementation, and $P=Q$ was excluded after \eqref{eq:Q-degree}.
+\end{proof}
+
+By the greedy comparison in Section~\ref{sec:conventions}, we now have $Z\leq\SL_i(2\delta)$. Combining this with Corollary~\ref{cor:two-upper} proves the first identity in \eqref{eq:two-target}. The prefix $UPQP$ is Lyndon because its first block is smaller than the others, and its length $2h-1$ is the greatest possible proper length. This gives the second identity, with standardness of the prefix following from factor closure.
+
+\subsection{The earlier parent and all imaginary degrees}\label{subsec:parent}
+
+\begin{theorem}\label{thm:parent}
+There is a unique $j<i$ such that
+\begin{equation}\label{eq:parent}
+ \SL_j(\delta)=
+ \begin{cases}
+ QP,&Q<P,\\
+ PQ,&P<Q.
+ \end{cases}
+\end{equation}
+In particular, $QP$ is a cyclic permutation of an earlier imaginary standard Lyndon word.
+\end{theorem}
+\begin{proof}
+We have shown that $Z=UPQPa$ is standard. For $P<Q$, its middle factor $PQ$ is Lyndon of degree $\delta$. For $Q<P$, use the factor $QP$ formed from $Q$ and the prefix $P$ of the final block $Pa$. This is again Lyndon of degree $\delta$, so factor closure makes the indicated word standard in either case.
+
+Both $P$ and $Q$ exceed $U$. By Proposition~\ref{prop:embedding}, the parent thus exceeds $UV=\SL_i(\delta)$ and has an index $j<i$. That index is unique.
+\end{proof}
+
+\begin{theorem}\label{thm:periodicity}
+For every order on $\{0,\ldots,n\}$, every $1\leq i\leq n$, and every $k\geq1$, the standard factorization $\SL_i(\delta)=L_iR_i$ satisfies
+\begin{equation}\label{eq:all-periodicity}
+ \SL_i(k\delta)=L_iW_i^{k-1}R_i,
+ \qquad
+ \SL_i^{\ls}(k\delta)=L_iW_i^{k-1},
+\end{equation}
+where $W_i$ is a cyclic permutation of $\SL_j(\delta)$ for some $j\leq i$. For an internal least letter and $i>1$, the formula is
+\begin{equation}\label{eq:explicit-periodicity}
+ \SL_i(k\delta)=UP(QP)^{k-1}a,
+ \qquad
+ \SL_i^{\ls}(k\delta)=UP(QP)^{k-1},
+\end{equation}
+with the earlier parent given by \eqref{eq:parent}.
+\end{theorem}
+\begin{proof}
+For an internal least letter and $i>1$, both degree-$2\delta$ identities have been proved, with $QP$ a cyclic permutation of the required earlier word. We may therefore apply the propagation theorem \cite[Proposition~6.32]{ET} to obtain \eqref{eq:explicit-periodicity} for every $k\geq1$.
+
+For $i=1$, use \cite[Proposition~6.25]{ET}, which gives \eqref{eq:all-periodicity} with $W_1=\SL_1(\delta)$. A least letter $0$ or $n$ has coefficient one in $\delta$, so \cite[Theorem~6.14]{ET} gives the formula with
+\[
+ W_i=\SL\bigl(M_1(\deg L_i)\bigr).
+\]
+This accounts for every order and index in type $C$, proving the corresponding part of Theorem~\ref{thm:main}.
+\end{proof}
+
+\subsection{The increasing-chain preperiod}\label{subsec:preperiod}
+
+We obtained the earlier parent in Theorem~\ref{thm:parent} by factor closure. To relate it to the increasing-chain construction, we now determine which real words, if any, are appended before that construction begins to repeat its imaginary parent.
+
+The finite roots with increasing chains form a positive system. Following \cite[Section~4]{ETC}, index its simple roots $\beta_1,\ldots,\beta_n$ by $m_1(\beta_i)=(\delta,i)$. The construction of \cite[Lemma~6.9]{ETC} starts at $L_i$ and repeatedly appends the greatest standard Lyndon word $v$ with nonzero bracket and resulting real degree in an increasing chain of $m_1$-index $i$. Its real appends form a nonincreasing sequence $v_1,\ldots,v_{N-1}$, after which it repeats $\SL(M_1(\deg y_i))$, where
+\[
+ y_i=L_iv_1\cdots v_{N-1}
+\]
+is the preperiod of \cite[Definition~6.10]{ETC}.
+
+By Theorem~\ref{thm:flag-types} and \cite[Lemma~6.11]{ETC}, the degree of $y_i$ lies in $\ch(\beta_i)$. Put
+\[
+ B=\SL(M_1(\beta_i)),
+ \qquad
+ \kappa=\min\{k\geq1:|y_i|<kh\}.
+\]
+The eventual-prefix formula \cite[Lemma~6.45]{ETC} gives a fixed prefix $w$ of $B$, possibly empty, such that for every $k\geq\kappa$,
+\begin{equation}\label{eq:eventual-prefix}
+ \SL_i^{\ls}(k\delta)=y_iB^{k-\kappa}w.
+\end{equation}
+
+\begin{theorem}\label{thm:preperiod}
+For an internal least letter and $i>1$, the increasing-chain parent and preperiod are
+\begin{equation}\label{eq:preperiod-table}
+ \begin{array}{c|c|c|c}
+ \text{order}&\text{parent }B&\text{preperiod }y_i&\beta_i\\ \hline
+ Q<P&QP&L_i&\Prj\deg L_i\\
+ P<Q&PQ&L_iQ&\Prj\deg U.
+ \end{array}
+\end{equation}
+Thus there are no real appends in the first case, and exactly the append $Q$ in the second case.
+\end{theorem}
+\begin{proof}
+Write $y_i=L_ic$, where $c=v_1\cdots v_{N-1}$ is the nonincreasing concatenation of the real appends. Comparing \eqref{eq:eventual-prefix} with \eqref{eq:all-periodicity} on arbitrarily long initial segments and canceling $L_i$, we obtain
+\begin{equation}\label{eq:infinite-tail}
+ (QP)^{\infty}=cB^{\infty}.
+\end{equation}
+Since $B$ and $QP$ both have degree $\delta$ and length $h$, this makes $B$ a cyclic rotation of $QP$. A degree-$\delta$ word contains exactly one $0$, so $QP$ is primitive and all its $h$ rotations are distinct.
+
+A Lyndon rotation begins with the least letter $r$, which occurs twice. Thus only $QP$ and $PQ$ are possible. By Proposition~\ref{prop:lyndon-substitution}, the rotation with smaller first block is the Lyndon one, giving the parent in \eqref{eq:preperiod-table}.
+
+If $Q<P$, then $B=QP$. The phase of the unique $0$ in \eqref{eq:infinite-tail} gives $|c|\equiv0\pmod h$, so $c=B^z$ for some $z\geq0$. The canonical factorization of a word into nonincreasing Lyndon words is unique \cite[Proposition~2.7]{ETC}. Comparing the real appends in $c$ with these $z$ imaginary factors forces $z=0$. There are no real appends, and $y_i=L_i$.
+
+If $P<Q$, then $B=PQ$, and the phase in \eqref{eq:infinite-tail} gives
+\[
+ |c|\equiv|Q|\pmod h,
+ \qquad c=Q(PQ)^z
+\]
+for some $z\geq0$. Since $Q>PQ$, the factors $Q,B,\ldots,B$ are already in nonincreasing Lyndon order. Uniqueness of the factorization again excludes the imaginary factors, giving $z=0$ and $c=Q$. Thus $Q$ is the sole real append and $y_i=L_iQ$.
+
+The finite projection of $\deg y_i$ is $\beta_i$. In the first case it is $\Prj\deg L_i$, while in the second we have
+\[
+ \deg(L_iQ)=\deg U+\delta,
+\]
+and hence projection $\Prj\deg U$, as in the final column of \eqref{eq:preperiod-table}.
+\end{proof}
+
+Thus the greatest eligible real append in the greedy construction is $Q$ exactly when $P<Q$. The degree-$2\delta$ argument did not require this identification.
+
+\subsection{The pointed statement in the flag quotient}\label{subsec:filtered}
+
+The degree-two calculation can also be expressed directly in the ordered flag quotient. For $Z_i=UPQPa$, it gives
+\begin{equation}\label{eq:filtered}
+ \br{Z_i}\in S_i^2\setminus S_{i-1}^2,
+ \qquad
+ \br{w}\in S_{i-1}^2
+ \quad\text{for every Lyndon $w>Z_i$ with $\deg w=2\delta$}.
+\end{equation}
+The first assertion is Lemma~\ref{lem:two-bracket}. The second follows from $Z_i=\SL_i(2\delta)$, proved in Theorem~\ref{thm:periodicity}, and the defining greedy order. Thus $Z_i$ is the greatest Lyndon word with nonzero image in the $i$th quotient. Its Cartan direction is $H_\gamma t^2$ for $Q<P$ and $H_\xi t^2$ for $P<Q$, in each case up to a nonzero scalar. This statement retains the word order and insertion cut (equal block-weight sums need not give equal brackets).
+
+\section{The orthogonal types}\label{sec:orthogonal}
+
+Two properties of the type-$C$ grid enter the proof: complementation reverses the coefficient order, and reflected edges with the same simple-root label satisfy a raising comparison. In the orthogonal types, the coefficient order has a diamond at each fork rather than being a product of chains. We replace grid intervals by arm ideals and prove the comparison at the two incomparable states. A separate short-root calculation handles the remaining type-$B$ bracket.
+
+\subsection{Roots and arm ideals}\label{subsec:orthogonal-arms}
+We use $B_n$ for $n\geq2$ and $D_n$ for $n\geq4$, with
+\[
+ \Phi(B_n)=\{\pm e_a\pm e_b:a<b\}\cup\{\pm e_a:1\leq a\leq n\},
+ \qquad
+ \Phi(D_n)=\{\pm e_a\pm e_b:a<b\}.
+\]
+For $i<n$, put $\alpha_i=e_i-e_{i+1}$. The remaining simple root is $\alpha_n=e_n$ in type $B$ and $\alpha_n=e_{n-1}+e_n$ in type $D$. In both types, $\theta=e_1+e_2$ and $\alpha_0=\delta-\theta$. Thus
+\begin{align}
+ \delta_B&=\alpha_0+\alpha_1+2\alpha_2+\cdots+2\alpha_n,
+ &h_B&=2n,\label{eq:B-null}\\
+ \delta_D&=\alpha_0+\alpha_1+2\alpha_2+\cdots+2\alpha_{n-2}
+                      +\alpha_{n-1}+\alpha_n,
+ &h_D&=2n-2.\label{eq:D-null}
+\end{align}
+We keep the word, bracket, and flag conventions of Section~\ref{sec:conventions}. In the usual $(2n+1)$-dimensional realization of type $B$, $H_v$ has an additional final zero entry. The least letters of coefficient two are
+\[
+ 2\leq r\leq n\quad(B_n),\qquad
+ 2\leq r\leq n-2\quad(D_n),
+ \qquad s=n-r.
+\]
+
+To retain both choices at a fork, we use a labeled poset rather than a single arm word. For $c=c_1\cdots c_m$ and distinct labels $a,b$, let
+\[
+ \mathcal F(c;a,b)
+   =c_1<\cdots<c_m<\{a,b\}<c_m'<\cdots<c_1'.
+\]
+The nodes in braces are incomparable, with every preceding node below both and every following node above both. Each primed node $c_j'$ carries the label $c_j$. The stem may be empty. The ideals form a chain apart from the two choices consisting of the stem and one fork node; we write $\mathcal C(c)$ for a labeled chain.
+
+Take the left and right arms to be
+\begin{align}
+ \mathcal A&=\mathcal F((r-1,r-2,\ldots,2);0,1),\label{eq:orth-left}\\
+ \mathcal B_D&=\mathcal F((r+1,r+2,\ldots,n-2);n-1,n),\label{eq:orth-right-D}\\
+ \mathcal B_B&=\mathcal C(r+1,\ldots,n-1,n,n,n-1,\ldots,r+1).
+ \label{eq:orth-right-B}
+\end{align}
+The right arm is empty when $r=n$ in type $B$. Reversal of a chain, or reversal of the two stems of a fork while fixing its fork nodes, gives a label-preserving order-reversing involution $\tau$. For an arm ideal $I$, define
+\[
+ I^*=\mathcal A\setminus\tau(I)
+ \quad\hbox{or}\quad I^*=\mathcal B\setminus\tau(I),
+\]
+as appropriate. This is again an ideal. We write $\lambda(I)$ for the sum of the node labels as simple roots, counting repeated labels twice.
+
+\begin{proposition}\label{prop:orthogonal-blocks}
+The positive real roots with $\alpha_r$-coefficient one are precisely
+\begin{equation}\label{eq:orth-degrees}
+ d_{I,J}=\alpha_r+\lambda(I)+\lambda(J),
+ \qquad I\in\mathcal J(\mathcal A),\quad
+        J\in\mathcal J(\mathcal B),
+\end{equation}
+where $\mathcal J$ denotes the set of order ideals. These degrees are distinct and satisfy
+\begin{equation}\label{eq:orth-complement}
+ \delta-d_{I,J}=d_{I^*,J^*}.
+\end{equation}
+Their finite projections form the sets
+\begin{align*}
+ \Omega_D&=\{x+z:x\in\{\pm e_a:a\leq r\},\
+                         z\in\{\pm e_b:b>r\}\},\\
+ \Omega_B&=\{x+z:x\in\{\pm e_a:a\leq r\},\
+                         z\in\{0\}\cup\{\pm e_b:b>r\}\}.
+\end{align*}
+In particular, there are $4rs$ blocks in type $D$ and $2r(2s+1)$ in type $B$.
+\end{proposition}
+\begin{proof}
+The left stem takes $e_r$ to $e_2$. Adding the fork label $1$ gives $e_1$, while adding $0$ gives $-e_1$ and contributes one $\delta$. Adding both gives $-e_2$, and the return stem ends at $-e_r$. Thus the left ideals run through the signed left coordinates exactly once.
+
+In type $D$, the right stem takes $-e_{r+1}$ to $-e_{n-1}$. Its two fork choices give $-e_n$ and $e_n$, while adding both gives $e_{n-1}$, followed by the return to $e_{r+1}$. The type-$B$ chain instead runs through
+\[
+ -e_{r+1},\ldots,-e_n,0,e_n,\ldots,e_{r+1}.
+\]
+The two successive additions of $\alpha_n=e_n$ pass through the zero state (when $s=0$, zero is the only state). In each case the calculation shows that the degrees in \eqref{eq:orth-degrees} are positive real roots, and their finite projections determine both ideals.
+
+The finite positive roots of coefficient one are the crossing roots $e_a\pm e_b$, together with $e_a$ for $a\leq r$ in type $B$. Their complements give all remaining block degrees by Theorem~\ref{thm:finite-blocks}, so the displayed lists are exhaustive. The two full arms sum to $\delta-2\alpha_r$, and $\tau$ preserves labels, giving \eqref{eq:orth-complement}.
+\end{proof}
+
+Put $X(I,J)=\SL(d_{I,J})$. Ideal inclusion is equivalent to coefficientwise comparison of the label counts: repeated labels occupy comparable nodes, while the two incomparable ideals contain different fork labels. Thus coefficientwise comparison of the block degrees is exactly inclusion in each arm.
+
+\begin{lemma}\label{lem:ideal-shuffle}
+The word $X(I,J)$ is $r$ followed by the lexicographically greatest labeled linear extension of $I\sqcup J$. It is obtained by choosing the greatest available label at each step. Enlarging either ideal strictly increases the word.
+
+For a fixed ideal in one arm, the word order on ideals in the other arm is independent of the fixed ideal. It is the inclusion order, with the two incomparable fork ideals ordered by their fork labels.
+\end{lemma}
+\begin{proof}
+Delete the final letter of a standard $r$-block. Its standard prefix is again an $r$-block, so Proposition~\ref{prop:orthogonal-blocks} identifies the deletion with removal of a maximal node of one ideal. Conversely, each such predecessor has real degree and brackets nontrivially with the deleted simple root. Induction in the generalized Leclerc recursion now identifies $X(I,J)$ with the greatest linear extension. The greedy choices have no ties: the arms use disjoint alphabets, fork labels are distinct, and repeated labels occur at comparable nodes.
+
+Restricting a greatest linear extension to an order ideal gives the greatest extension of that ideal. Indeed, a deleted node cannot precede a retained node in the poset, so every available retained node was available at the corresponding step of the original extension. The retained greedy choice is therefore unchanged. At the first deleted node, its label exceeds the next retained label, or the retained word has ended. This gives strict monotonicity under enlargement.
+
+Only the two fork ideals are incomparable. Replacing the smaller fork label by the larger one in any shuffle gives an admissible shuffle for the other ideal and increases the word. The comparison is independent of the fixed arm.
+\end{proof}
+
+\subsection{The first endpoint}\label{subsec:orthogonal-endpoint}
+To find the complementary pair with aligned standard prefix, run the greedy extension along the outward stems. As soon as a stem is exhausted, expose its two fork labels and stop when either is chosen. For type $B$, whose right arm has no fork, stop exposing right nodes after the first $n$, at the zero state. The left fork still ensures termination, including when the right arm is empty.
+
+Write $T$ for $r$ followed by the emitted labels before the stopping letter $a$. If $(I,J)$ are the ideals obtained on adjoining $a$, set
+\begin{equation}\label{eq:orth-exception}
+ V_*=Ta=X(I,J),\qquad U_*=X(I^*,J^*).
+\end{equation}
+
+\begin{theorem}\label{thm:orthogonal-seam}
+Among all complementary pairs $U<V$ in types $B$ and $D$, there is exactly one satisfying $V^-\leq U$. It is the pair in \eqref{eq:orth-exception}, and its candidate is the greatest one. Hence
+\[
+ \SL_1(\delta)=U_*V_*.
+\]
+For every $i>1$, the costandard factorization $\SL_i(\delta)=UV$ satisfies
+\begin{equation}\label{eq:orth-standard-prefix}
+ \SL_i^{\ls}(\delta)=UV^-,\qquad
+ \SL_i^{\rs}(\delta)=\text{the final letter of }V.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Both fork letters were available, so the chosen letter $a$ exceeds the other letter $b$. The complementary ideal uses $b$ in place of $a$. Its shuffle agrees with $T$: any additional head from the other arm was available in the outward shuffle and lost every comparison before $a$. At the type-$B$ zero state the complement is also zero, so there is no additional right head. After $T$, all heads available for $U_*$, including $b$, are smaller than $a$. Thus $T$ is a prefix of $U_*<V_*$.
+
+Conversely, suppose that $V=Ta$ and $V^-\leq U<V$. By Lemma~\ref{lem:prefix-sandwich}, $T$ is a prefix of $U$. It contains no fork label, since each has coefficient one in $\delta$, and it contains each repeated stem label at most once. In type $B$ the same restriction holds for $n$. Thus $T$ reaches outward states, with the right state in type $B$ no farther than zero.
+
+We claim that $a$ is a fork label. Otherwise it has coefficient two in $\delta$ and cannot occur in $T$, since $T$ and $Ta$ together would then contain it at least three times. Its first occurrence is available after $T$ in the ideal for $V$. It is also available in the complementary ideal for $U$, which still contains an occurrence of $a$. Hence the next greedy label of $U$ is at least $a$, contradicting $U<V=Ta$.
+
+Each outward head needed to compare the shuffles is present in at least one complementary ideal. Since both words follow $T$, a head larger than its next letter would contradict the greedy choice in the word containing that head. At an exposed fork, $V$ contains $a$ and $U$ contains the other fork label, so both labels are accounted for as well. The outward shuffle therefore follows $T$ and then chooses $a$, proving uniqueness.
+
+For maximality, suppose that both blocks of another complementary pair are at least $U_*$. They must follow the outward shuffle through $T$: at a first departure there is no larger head, while a smaller head or an early end would put the block below $U_*$. The only possible extra head is a second $n$ after zero in type $B$. But both blocks have then followed a prefix containing $n$, so neither can use that extra head without exceeding its total coefficient two.
+
+At the stopping fork, both blocks contain the outward stem. Neither uses a return node, since its repeated label has already appeared in each block. Thus their fork subsets are either empty and full, or the two singletons. One of these subsets is contained in $\{b\}$, the subset used by $U_*$. The corresponding block's other ideal is contained in the complement of the other ideal of $V_*$, because both blocks contain the outward prefix. By Lemma~\ref{lem:ideal-shuffle}, this block is at most $U_*$. Equality determines both ideals and hence the complementary pair. Every other candidate has a smaller first block.
+
+The candidates are complementary real blocks with nonzero coroot brackets, so Proposition~\ref{prop:delta-candidates} applies and the greatest candidate is selected first. Proposition~\ref{prop:prefix-criterion} then gives \eqref{eq:orth-standard-prefix}.
+\end{proof}
+
+The standard and costandard prefixes thus differ for every noninitial selection. By \cite[Proposition~4.28]{ETC}, this proves irreducibility of every imaginary root-flag subsystem in types $B,D$ for coefficient-two minima. The coefficient-one case is \cite[Lemma~4.31]{ETC}. Together with Theorem~\ref{thm:flag-types}, these results establish classical flag connectivity, as needed for the preperiod calculation.
+
+\subsection{A raising comparison across a fork}\label{subsec:orthogonal-raising}
+Write $I^+=I+a$ for an arm cover $I\subset I^+$ with added label $a$ (only the node on that cover is added). The opposite cover is
+\begin{equation}\label{eq:opposite-covers}
+ I\longrightarrow I+a,\qquad
+ K=(I+a)^*\longrightarrow K+a=I^*.
+\end{equation}
+The sources $I,K$ are comparable by inclusion, as are their targets in the same direction. This is clear on a chain. At a fork, the two covers with a specified fork label start at the stem and at the stem with the other fork node. The two successive occurrences of $n$ in the type-$B$ chain have the same property.
+
+\begin{lemma}[Reflected raising]\label{lem:orthogonal-raising}
+Let $U<V=Pa$ be complementary blocks, with $P>U$, and let $Q$ complement $P$. If a block $R$ satisfies $R\leq U$ and $\deg R+\alpha_a$ is a block degree, then
+\begin{equation}\label{eq:orth-raising}
+ \SL(\deg R+\alpha_a)\leq Q.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Suppose first that $a$ is a left-arm label. With the notation of \eqref{eq:opposite-covers}, write
+\[
+ P=X(I,J),\quad V=X(I+a,J),\quad
+ U=X(K,J^*),\quad Q=X(K+a,J^*).
+\]
+The covers in \eqref{eq:opposite-covers} are the only ones with label $a$. Thus the left ideal of $R$ is $I$ or $K$.
+
+For $R=X(K,H)$, the inequality $X(K,H)\leq X(K,J^*)$ is preserved on replacing the fixed left ideal by $K+a$, by Lemma~\ref{lem:ideal-shuffle}. This gives \eqref{eq:orth-raising}.
+
+Now let $R=X(I,H)$. From $X(I,H)\leq U<P=X(I,J)$ we have $J\nsubseteq H$. If $H,J$ are incomparable, they are the two fork ideals, so $H=J^*$. The sources $I,K$ are comparable, and $X(I,J^*)\leq X(K,J^*)$ therefore gives $I\subseteq K$. The same inclusion holds for the targets, $I+a\subseteq K+a$, and monotonicity proves the result.
+
+We are left with $H\subsetneq J$. Delete the nodes of $J\setminus H$ from the greatest extension $V=Pa$. By the restriction property in Lemma~\ref{lem:ideal-shuffle},
+\[
+ X(I+a,H)=X(I,H)a=Ra.
+\]
+If $R<U$ is decided inside the words, then $Ra<Ua\leq Q$: appending the new node $a$ to an extension of $K\sqcup J^*$ is admissible. If $R=U$, their ideals agree and the same bound holds.
+
+If $R$ is a proper prefix of $U$, its nodes form an ideal in $K\sqcup J^*$, so $I\subseteq K$. The node on the cover $I\to I+a$ belongs to $K+a$ and has all predecessors in $I$. We may therefore append it to $R$ and complete the word to an extension of $(K+a)\sqcup J^*$. The greatest such extension is $Q$, giving $Ra\leq Q$. The proof for a right-arm label interchanges the two arms.
+\end{proof}
+
+A fork requires only the additional comparison of its two incomparable ideals. A chain truncation alone would miss that case.
+
+\subsection{The degree-two word}\label{subsec:orthogonal-degree-two}
+Fix $i>1$. By Theorem~\ref{thm:orthogonal-seam}, write
+\begin{equation}\label{eq:orth-setup}
+ \SL_i(\delta)=UV=UPa,\qquad
+ L_i=UP,\quad U<P<V,\quad
+ \deg Q=\delta-\deg P=\deg U+\alpha_a.
+\end{equation}
+By the block recursion, $Q\geq Ua>U$. The equality $P=Q$ is impossible because the $\alpha_0$-coefficient of $\delta$ is one.
+
+Lemma~\ref{lem:first-blocks} gives the first two blocks $U,P$ of $\SL_i(k\delta)$ for $k\geq2$. Its proof uses the chain and prefix results of Section~\ref{subsec:inputs}, the identity $|L_i|=h-1$, and the absence of a root $\delta-\alpha_a+\alpha_b$ for distinct simple labels. This last assertion holds in both orthogonal types: the projection is a difference of distinct simple roots, or $\pm(\theta+\alpha_c)$. The same chain result excludes an imaginary proper Lyndon prefix. Thus in degree $2\delta$ we may write
+\[
+ \SL_i(2\delta)=UPST.
+\]
+
+\begin{lemma}\label{lem:orthogonal-third}
+The block $S$ satisfies $S\leq Q$.
+\end{lemma}
+\begin{proof}
+Suppose that $S>Q$. Then $UPS$ is a proper Lyndon prefix, hence real, standard, and increasing. Its initial segment $L_i$ gives $m_1$-index $i$. We claim that
+\begin{equation}\label{eq:orth-root-lowering}
+ R:=\deg S-\alpha_a
+\end{equation}
+is a block degree, so that we can apply Lemma~\ref{lem:orthogonal-raising}.
+
+For a left-arm label $a$, let $x,x'$ be the left weights of $U,Q$. They occupy distinct coordinate axes and satisfy $\Prj\alpha_a=x'-x$. Writing $\Prj\deg S=y+z$, we have
+\[
+ \Prj\deg(UPS)=y+x-x'+z.
+\]
+The right component $z$ is a signed coordinate, or zero in type $B$. For the sum to be a root, its left component must be a single signed coordinate. This occurs only through the cancellations $y=x'$ or $y=-x$, which are exactly the two left covers with label $a$. Removing $a$ thus gives an arm ideal in either case.
+
+For a right-arm label away from the short endpoint of $B_n$, interchange the arms in the same calculation. A zero right weight in $S$ gives no additional case: after subtracting a difference of distinct signed right coordinates, there would be two right coordinates and a nonzero left coordinate, which is not a root. At the short endpoint $a=n$ of type $B$, the right cover is
+\[
+ -e_n\longrightarrow0\quad\hbox{or}\quad0\longrightarrow e_n.
+\]
+If $z$ is the right weight of $S$, the right component of $\Prj\deg(UPS)$ is $z-e_n$. It is zero or a signed coordinate precisely for $z=e_n$ or $z=0$. Removing $\alpha_n$ gives the zero state or $-e_n$, respectively, and proves \eqref{eq:orth-root-lowering} in this case too. The finite projection uniquely determines the arm states, and the cover has label $a$, so the affine degree is indeed $\deg S-\alpha_a$.
+
+We now have $\deg(UPS)=\delta+R$, so chain invariance makes $R$ increasing with $m_1$-index $i$. Since $|R|<h$, the maximal-prefix characterization in Section~\ref{subsec:inputs} gives $\SL(R)\leq L_i=UP$. Equivalently, $\SL(R)\leq U$ by Proposition~\ref{prop:embedding}. The raising lemma \ref{lem:orthogonal-raising} then gives $S\leq Q$, a contradiction.
+\end{proof}
+
+When $S=Q$, the remaining degree forces the fourth block to be $V$. Thus the lemma gives
+\begin{equation}\label{eq:orth-upper}
+ \SL_i(2\delta)\leq Z:=UPQV=UPQPa.
+\end{equation}
+For the reverse inequality, we need the costandard bracket in the new flag layer, not just its degree.
+
+Put $\xi=\Prj\deg U$, $\eta=\Prj\deg Q$, and $\gamma=\Prj\alpha_a$. As in \eqref{eq:bracket-degrees},
+\[
+ \Prj\deg V=-\xi,\qquad \Prj\deg P=-\eta,
+ \qquad \eta-\xi=\gamma.
+\]
+The first block of $Z$ is smaller than the other three, so $Z$ is Lyndon, with the costandard factorizations \eqref{eq:bracket-case-one}--\eqref{eq:bracket-case-three}. For $Q<P$, the first bracket is a nonzero multiple of $H_\gamma t^2$ in $S_i^2\setminus S_{i-1}^2$, by the standard factorization $L_i a$. For $P<Q<V$, the second is a nonzero multiple of $H_\xi t^2$ in that layer, by the selected bracket of $UV$.
+
+For $P<V<Q$, the third bracket is nonzero if $(\eta,\xi)\ne0$. In type $D$, the three roots $\xi,\eta,\gamma$ have squared length two, so $\eta-\xi=\gamma$ gives $(\eta,\xi)=1$. The same value holds in type $B$ unless both $\xi,\eta$ are short. At the short endpoint, $\gamma$ has squared length one and $\xi,\eta$ have squared lengths $1,2$ in some order, which again gives inner product one.
+
+If both $\xi,\eta$ are short, their right states are zero and $a$ belongs to the left arm. All four blocks then have the same right ideal $J_0=J_0^*$. With the notation of \eqref{eq:opposite-covers}, the inequality $P=X(I,J_0)>X(K,J_0)=U$ gives $K\subsetneq I$, since the sources are comparable. Hence $K+a\subsetneq I+a$ and $Q<V$, contrary to the assumed order. Thus the only zero-inner-product case is excluded, and the third bracket is a nonzero multiple of $H_\xi t^2$ in $S_i^2\setminus S_{i-1}^2$.
+
+We have $\br{Z}\notin S_{i-1}^2$, so the defining greedy order gives $Z\leq\SL_i(2\delta)$. Together with \eqref{eq:orth-upper}, this proves
+\begin{equation}\label{eq:orth-degree-two}
+ \SL_i(2\delta)=UPQPa,\qquad
+ \SL_i^{\ls}(2\delta)=UPQP.
+\end{equation}
+For the prefix identity, $UPQP$ is Lyndon and has the greatest possible proper length $2h-1$.
+
+\subsection{Period, parent, and preperiod}\label{subsec:orthogonal-period}
+\begin{theorem}\label{thm:orthogonal-period}
+In types $B_n^{(1)}$ and $D_n^{(1)}$, for every coefficient-two least letter and every $i>1$, for every $k\geq1$, the notation of \eqref{eq:orth-setup} satisfies
+\begin{equation}\label{eq:orth-period}
+ \SL_i(k\delta)=UP(QP)^{k-1}a,\qquad
+ \SL_i^{\ls}(k\delta)=UP(QP)^{k-1}.
+\end{equation}
+The word $\min(P,Q)\max(P,Q)$ is $\SL_j(\delta)$ for a unique $j<i$. It is also the increasing-chain parent, and the preperiod is
+\[
+ y_i=\begin{cases}L_i,&Q<P,\\L_iQ,&P<Q.\end{cases}
+\]
+In the first case the increasing-chain construction has no real append; in the second its sole real append is $Q$.
+\end{theorem}
+\begin{proof}
+The standard word $UPQPa$ in \eqref{eq:orth-degree-two} contains the Lyndon factor $PQ$ if $P<Q$, and $QP$ if $Q<P$. Factor closure makes that degree-$\delta$ word standard. Its first block exceeds $U$, so its index is smaller than $i$. The propagation theorem \cite[Proposition~6.32]{ET} now gives \eqref{eq:orth-period} from \eqref{eq:orth-degree-two}.
+
+For the preperiod, use connectivity as established after Theorem~\ref{thm:orthogonal-seam}. Let $B=\SL(M_1(\beta_i))$ be the increasing-chain parent, and write $y_i=L_ic$ as in Section~\ref{subsec:preperiod}. Comparing \cite[Lemma~6.45]{ETC} with \eqref{eq:orth-period} gives
+\[
+ (QP)^\infty=cB^\infty.
+\]
+A degree-$\delta$ word contains one $0$ and is therefore primitive. Of its rotations, only $QP$ and $PQ$ begin with the least letter, and only the one with smaller first block is Lyndon. Hence $B=QP$ for $Q<P$, and $B=PQ$ for $P<Q$.
+
+The phase of the unique $0$ gives $c=B^z$ in the first case and $c=QB^z$ in the second, for some $z\geq0$. But the canonical nonincreasing Lyndon factors of $c$ are precisely the real appends. Their uniqueness excludes every imaginary factor $B$, forcing $z=0$. Thus the preperiod is $L_i$ or $L_iQ$, respectively. Taking finite projections also gives $\beta_i=\Prj\deg L_i$ or $\beta_i=\Prj\deg U$, as in Theorem~\ref{thm:preperiod}.
+\end{proof}
+
+For $i=1$, \cite[Proposition~6.25]{ET} gives the formula with period $\SL_1(\delta)$, while \cite[Theorem~6.14]{ET} treats coefficient-one minima. Together with Theorem~\ref{thm:periodicity}, this proves the classical part of Theorem~\ref{thm:main}. The same cited theorem covers type $A$, whose Kac marks are all one.
+
+\subsection{Orthogonal flags and primitive lattices}\label{subsec:orthogonal-flags}
+Let $v_i$ be primitive in the direction of the $i$th selected Cartan bracket, where primitivity is taken in $\bigoplus_a\Z H_{e_a}$, not in the coroot lattice. In type $D$, these columns are the crossing vectors $e_a\pm e_b$. In type $B$, the additional columns are $e_a$ for $a\leq r$, up to sign (a short coroot is divided by its common integral factor before use as a column).
+
+\begin{theorem}\label{thm:orthogonal-flags}
+For a coefficient-two least letter, the imaginary flag subsystems have the following forms:
+\[
+ \begin{array}{ll}
+ B_n:&A_1,\ldots,A_{t-1},B_t,\ldots,B_n\quad(1\leq t\leq n),\\
+ D_n:&A_1,\ldots,A_{t-1},D_t,\ldots,D_n\quad(3\leq t\leq n).
+ \end{array}
+\]
+Here the initial $A$-sequence is empty when $t=1$, and $D_3$ denotes the root system isomorphic to $A_3$. If $M$ has columns $v_1,\ldots,v_n$, then
+\begin{align}
+ M\Z^n&=\Z^n,& |\det M|&=1&&\text{in type }B,\label{eq:B-lattice}\\
+ M\Z^n&=\{z\in\Z^n:\textstyle\sum_a z_a\equiv0\pmod2\},
+ &|\det M|&=2&&\text{in type }D.\label{eq:D-lattice}
+\end{align}
+\end{theorem}
+\begin{proof}
+For type $D$, apply the support argument of Proposition~\ref{prop:flag-connected} to the crossing-edge graph. A first disconnected edge would introduce two new coordinates on opposite sides of the cut. But the same new flag layer contains the direction of the final letter in \eqref{eq:orth-standard-prefix}. That letter is not $r$, so its two-coordinate support lies on one side of the cut, a contradiction. Hence every selected graph is connected on its used vertices.
+
+By Lemma~\ref{lem:signed-rank}, the graph is a tree until its first unbalanced cycle, after which each added vertex enlarges a full coordinate span. The corresponding subsystems are of type $A$ and then $D_t$. The case $t=2$ is excluded by irreducibility, since $D_2=A_1\sqcup A_1$. The final graph is unbalanced and unicyclic, so the leaf expansion and parity-index argument of Theorem~\ref{thm:column-lattice} give \eqref{eq:D-lattice}.
+
+In type $B$, we must first show that a short column is selected before any unbalanced cycle. For each left axis $e_a$, let $x_a\in\{e_a,-e_a\}$ be the smaller left-arm state. On a right axis $e_b$, the state $-e_b$ lies below zero and then $e_b$. By Lemma~\ref{lem:ideal-shuffle}, the complementary candidate beginning with weight $x_a-e_b$ uses both smaller states. The short candidate with weights $x_a,-x_a$ uses the same left state and the larger right state zero, so it is strictly greater.
+
+Call the crossing directions $x_a-e_b$ the corner directions. After changing signs on the left axes, the other crossing directions all become $e_a+e_b$ and form a balanced bipartite graph. Suppose that a corner direction is selected before any short column, and take the first such selection. By Lemma~\ref{lem:signed-rank}, the preceding balanced graph has a signed coordinate-sum-zero span on each component and contains no coordinate vector. The corresponding short candidate, which was scanned earlier, would therefore have been independent and selected, a contradiction. Thus no unbalanced cycle can precede the first short selection.
+
+Before that selection, the graph is a forest. Its root subsystem is a direct sum of $A$-systems, so irreducibility makes it a single tree. The first short column uses a vertex of this tree unless it is the first selection altogether, since a new vertex would give a separate $B_1$ factor. If this occurs at step $t$, the resulting $t$ primitive columns span the full coordinate space on $t$ vertices. Their determinant has absolute value one, as one sees by successively removing leaf rows until only the short column remains.
+
+After the span becomes full on its used coordinates, an independent column is either short on a new coordinate or crossing with one old and one new coordinate. A crossing column on two new coordinates would create a disjoint $A_1$ factor, contrary to irreducibility, while a column on old coordinates is dependent. Each subsequent step therefore enlarges the full coordinate span by one and introduces a unit pivot. This gives both the $B$-flag sequence and \eqref{eq:B-lattice}.
+\end{proof}
+
+
+\section{The parent tree and effective construction}\label{sec:construction}
+
+The earlier-parent relation recovers the finite Dynkin diagram. We also use the block model to construct the imaginary words without first computing the intermediate affine root spaces.
+
+\subsection{Primitive periods and the parent tree}
+\begin{corollary}\label{cor:primitive-period}
+For fixed standard factors $L_i,R_i$, the period $W_i$ in Theorem~\ref{thm:main} is unique. It has degree $\delta$, is not a proper power, and its infinite repetition has least period $h=|\delta|$. Its standard Lyndon parent is unique.
+\end{corollary}
+\begin{proof}
+Cancel $L_i,R_i$ in degree $2\delta$ to recover the period uniquely. Its degree is $\delta$, so it contains exactly one $0$ and cannot be a proper power. Consecutive occurrences of $0$ in its infinite repetition are separated by $h$ letters. Any period preserves those positions and is thus a multiple of $h$. The unique Lyndon rotation of this primitive cyclic word is its parent.
+\end{proof}
+
+For a coefficient-two least letter, write $p(i)<i$ for the parent index when $i>1$. Let $\beta_1,\ldots,\beta_n$ be the simple roots of the increasing-chain positive system, indexed by the imaginary flag as in Section~\ref{subsec:preperiod}.
+
+\begin{corollary}\label{cor:parent-tree}
+For types $B$, $C$, and $D$ with a coefficient-two least letter, the edges
+\[
+ \{\,\{i,p(i)\}:2\leq i\leq n\,\}
+\]
+are precisely the edges of the underlying Dynkin diagram on $\beta_1,\ldots,\beta_n$. Orienting each edge toward the smaller index gives a tree rooted at $1$. Thus the parent graph is a path in types $B$ and $C$ and is the type-$D$ tree in type $D$. The bond multiplicities and their orientations are recovered from the lengths and pairings of the roots $\beta_i$.
+\end{corollary}
+\begin{proof}
+By Theorems~\ref{thm:preperiod} and \ref{thm:orthogonal-period}, $p(i)$ is the index in $M_1(\beta_i)$. Flag connectivity, proved in Theorem~\ref{thm:flag-types} and after Theorem~\ref{thm:orthogonal-seam}, permits us to apply \cite[Lemma~4.32]{ETC}: this index is the unique earlier simple root adjacent to $\beta_i$. The $n-1$ distinct parent edges therefore exhaust the Dynkin tree, and their decreasing indices direct every path to $1$. The Cartan integers $2(\beta_i,\beta_j)/(\beta_i,\beta_i)$ determine the bonds and their orientations.
+\end{proof}
+
+For example, take type $D_4^{(1)}$ with $2<0<1<3<4$. The first-endpoint rule gives $U_*=2310$ and $V_*=24$. The factors and parents are
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$i$ & $\SL_i(\delta)$ & $L_i$ & $W_i$ & $R_i$\\
+\midrule
+1 & 231024 & 2310 & 231024 & 24\\
+2 & 231240 & 23124 & 231024 & 0\\
+3 & 230241 & 23024 & 231024 & 1\\
+4 & 210243 & 21024 & 231024 & 3\\
+\bottomrule
+\end{tabular}
+\end{center}
+All three noninitial words have parent $1$, giving the trivalent vertex of $D_4$.
+
+The zero state in type $B$ produces a different integral behavior. In type $B_3^{(1)}$ with $2<0<1<3$, the selected words are
+\[
+ 230231,\qquad232310,\qquad210233,
+\]
+with primitive Cartan directions
+\[
+ -e_1,\qquad e_2,\qquad-e_2-e_3.
+\]
+These columns have determinant of absolute value one, in agreement with Theorem~\ref{thm:orthogonal-flags}. The noninitial periods are $230231$ and $231023$, with parents $1$ and $2$. Thus the zero state changes both the block words and the primitive column lattice.
+
+\subsection{Polynomial preprocessing}
+\begin{theorem}\label{thm:algorithm}
+Fix type $B_n^{(1)}$, $C_n^{(1)}$, or $D_n^{(1)}$ and an alphabet order whose least letter has coefficient two in $\delta$. All degree-$\delta$ standard Lyndon words, their standard factors, and their periods can be computed using
+\[
+ O(n^3\log n)\text{ time},\qquad O(n^3)\text{ space},
+\]
+where the preprocessing time counts alphabet comparisons and elementary operations on $O(\log n)$-bit indices, and space counts stored alphabet symbols and indices. The retained factor table has size $O(n^2)$. Thereafter a specified word $\SL_i(k\delta)$ can be written in $O(kn)$ symbol-output steps, which is optimal up to a constant factor in its output length.
+\end{theorem}
+\begin{proof}
+Each arm has $O(n)$ ideals, with at most two covers at a state. Represent a state by its position and, at a fork, its branch choice, so that inclusion and available covers can be tested in constant time. We construct each block by its greatest linear extension (the grids of Proposition~\ref{prop:grid-shuffle} are the case with no forks). There are $O(n^2)$ blocks, each of length at most $h-1=O(n)$, giving $O(n^3)$ time and space.
+
+Pair complementary states, place the smaller block first, and sort the $O(n^2)$ candidates in decreasing order. Their lengths are $h=O(n)$, so comparison sorting costs $O(n^3\log n)$. The Cartan direction of a candidate is the projection of either block, up to a nonzero scalar. It remains to test greedy independence for columns with one or two nonzero entries, all equal to $1$ or $-1$.
+
+We can perform this test without rational elimination. A retained two-entry column gives a signed edge and a left-kernel equation $x_a=\sigma x_b$, while a one-entry column gives $x_a=0$. Traverse each component and propagate signs from one vertex. As in Lemma~\ref{lem:signed-rank}, the component has one free scalar unless an inconsistent cycle or a one-entry column forces it to zero.
+
+A new column is independent precisely when it pairs nontrivially with some vector in this left kernel. The component signs and free scalars decide the test from its one or two entries. Since at most $n$ columns are retained, recomputing the component data costs $O(n)$ per candidate and $O(n^3)$ overall. Proposition~\ref{prop:delta-candidates} and its orthogonal counterpart identify these with the required degree-$\delta$ selections.
+
+For the first selection, retain the factors $U_*,V_*$ and period $U_*V_*$. For each later pair $UV$, delete the final letter $a$ of $V$ to obtain $P$, find its complement $Q$, and retain $L_i=UP$, $R_i=a$, $W_i=QP$. These are the required factors by Theorems~\ref{thm:periodicity} and \ref{thm:orthogonal-period}. Their total length is $O(n^2)$, so we can discard the block table. Expanding $L_iW_i^{k-1}R_i$ takes time proportional to its length $kh=\Theta(kn)$.
+\end{proof}
+
+For direct access at a zero-based position $t$, compare $t$ with $|L_i|$ and $|L_i|+(k-1)h$. In the middle interval, read position $(t-|L_i|)\bmod h$ of $W_i$; otherwise read the corresponding position of $L_i$ or $R_i$. No preceding letters need be written.
+
+\section{All untwisted types and a uniform phase formula}\label{sec:all-untwisted}
+
+We now allow $\Phi$ to be any finite irreducible root system, with rank $n$ and null-root height $h=|\delta|$ for its untwisted affinization. The classical cases have been proved in arbitrary rank, while the exceptional cases were verified for every alphabet order in \cite[Remark~6.29]{ET}. Their combination gives the untwisted theorem. Once this is available, we can recover the preperiod by a phase argument independent of the Dynkin diagram.
+
+\subsection{Completion of the untwisted theorem}
+\begin{proof}[Proof of Theorem~\ref{thm:main} in all untwisted types]
+For a least letter of Kac mark one, apply \cite[Theorem~6.14]{ET}. The only remaining classical marks are two, treated by Theorems~\ref{thm:periodicity} and \ref{thm:orthogonal-period}, including the explicit factors in the second part of Theorem~\ref{thm:main}. This proves \eqref{eq:main} in all classical cases.
+
+The remaining root systems are $G_2,F_4,E_6,E_7,E_8$. For each of them, \cite[Remark~6.29]{ET} verifies the word and standard-prefix identities in degree $2\delta$ for every alphabet order and imaginary index. Proposition~6.32 of that paper propagates the identities to all positive multiples of $\delta$, and its Remark~6.28 gives the parent condition. These prior computer-assisted verifications cover all remaining cases in the classification.
+\end{proof}
+
+Thus every untwisted Kac mark is included. The exceptional part of the proof uses the cited computer-assisted results, whereas the all-rank classical arguments and the structural deductions below do not use this paper's supplementary computations.
+
+\begin{proposition}\label{prop:all-connectivity}
+For every untwisted affine type and every alphabet order, each imaginary flag subsystem $\Phi_i$ is irreducible. Consequently the connectivity conjecture of \cite[Conjecture~4.27]{ETC} holds in every untwisted type.
+\end{proposition}
+\begin{proof}
+The coefficient-one case is \cite[Lemma~4.31]{ETC}. For classical coefficient-two minima, use Theorem~\ref{thm:flag-types} and the consequence of Theorem~\ref{thm:orthogonal-seam}. In every exceptional type and order, \cite[Remark~4.30]{ETC} verifies
+\[
+ \SL_i^l(\delta)\ne\SL_i^{\ls}(\delta)\qquad(i>1).
+\]
+By Proposition~4.28 of that paper, these discrepancies imply irreducibility of each flag subsystem. The exceptional input here is the cited discrepancy verification, rather than an implication from periodicity alone.
+\end{proof}
+
+\subsection{Recovering the preperiod from the insertion phase}
+We use the canonical factorization $c=c_1\cdots c_t$ into nonincreasing Lyndon words, with the empty factorization for the empty word. The suffix in an insertion phase is controlled by the following elementary fact.
+
+\begin{lemma}\label{lem:suffix-factors}
+If $B$ is Lyndon and $C$ is a nonempty proper suffix of $B$, then every factor in the canonical Lyndon factorization of $C$ is strictly greater than $B$.
+\end{lemma}
+\begin{proof}
+Write $C=c_1\cdots c_t$ with $c_1\geq\cdots\geq c_t$. The final factor $c_t$ is a nonempty proper suffix of $B$, so $B<c_t$, and hence $B<c_j$ for every factor.
+\end{proof}
+
+\begin{theorem}[Exact phase and preperiod]\label{thm:uniform-phase}
+Fix an arbitrary untwisted affine type, alphabet order, and imaginary index $i$. Let $L_i,R_i,W_i$ be the factors in Theorem~\ref{thm:main}, and let $B_i$ be the unique Lyndon rotation of $W_i$. There is a unique factorization
+\begin{equation}\label{eq:phase-split}
+ B_i=A_iC_i,\qquad W_i=C_iA_i,\qquad 0\leq|C_i|<h.
+\end{equation}
+The increasing-chain preperiod of \cite[Definition~6.10]{ETC} is
+\begin{equation}\label{eq:uniform-preperiod}
+ y_i=L_iC_i.
+\end{equation}
+Its real appends, in their exact order, are the canonical Lyndon factors of $C_i$. In particular,
+\begin{equation}\label{eq:preperiod-bound}
+ |y_i|\leq2h-2,\qquad
+ \min\{k\geq1:|y_i|<kh\}\leq2.
+\end{equation}
+The onset index in \eqref{eq:preperiod-bound} is one exactly when $C_i$ is empty, and is two otherwise. Moreover,
+\[
+ \beta_i=\Prj\deg(L_iC_i),\qquad B_i=\SL(M_1(\beta_i)).
+\]
+For $i>1$, the parent index is strictly smaller than $i$.
+\end{theorem}
+\begin{proof}
+A degree-$\delta$ word has one affine letter $0$, so it is primitive. Its Lyndon rotation and the cut in \eqref{eq:phase-split} are therefore unique. By Proposition~\ref{prop:all-connectivity}, the increasing-chain construction and eventual-prefix theorem from Section~\ref{subsec:preperiod} apply to every untwisted type. Write
+\[
+ y_i=L_ic,\qquad B=\SL(M_1(\beta_i)).
+\]
+The word $c$ is the nonincreasing concatenation of the real standard Lyndon appends. Compare the eventual-prefix formula \cite[Lemma~6.45]{ETC} with \eqref{eq:main} on arbitrarily long prefixes to obtain
+\begin{equation}\label{eq:uniform-phase-tail}
+ W_i^\infty=cB^\infty.
+\end{equation}
+Both periods have length $h$, so $B$ is a rotation of $W_i$. As $B$ is Lyndon, it equals $B_i$.
+
+The unique occurrence of $0$ in each period of \eqref{eq:uniform-phase-tail} determines the phase:
+\[
+ |c|\equiv |C_i|\pmod h,\qquad c=C_iB_i^q
+\]
+for some integer $q\geq0$. By Lemma~\ref{lem:suffix-factors}, all canonical Lyndon factors of a nonempty $C_i$ exceed $B_i$. Thus the canonical factorization of $C_iB_i^q$ consists of those factors followed by $q$ copies of $B_i$ (with no initial factors when $C_i$ is empty).
+
+The factors of $c$ are real, whereas $B_i$ has imaginary degree. Uniqueness of canonical factorization therefore forces $q=0$ and identifies the appends with the factors of $C_i$, proving \eqref{eq:uniform-preperiod}. These factors are standard by factor closure inside $B_i$, and their lengths are less than $h$, so their degrees are real. The inequalities $|L_i|,|C_i|\leq h-1$ give \eqref{eq:preperiod-bound}.
+
+If $C_i$ is empty, then $y_i=L_i$ has length less than $h$. Otherwise $y_i\ne L_i$, so \cite[Corollary~6.15]{ETC} gives $|y_i|\geq h$. Equality is impossible because $y_i$ is real. Thus $h<|y_i|<2h$ in this case, giving the exact onset index. By \cite[Lemma~6.11]{ETC}, $\deg y_i$ lies in the chain of $\beta_i$, and its finite projection gives the stated formula for $\beta_i$.
+
+Finally, Proposition~\ref{prop:all-connectivity} permits us to apply \cite[Lemma~4.32]{ETC}. For $i>1$, it identifies $M_1(\beta_i)$ with the unique earlier simple root adjacent to $\beta_i$, so the parent index is strictly smaller than $i$.
+\end{proof}
+
+For coefficient-two classical minima, $C_i$ is empty or is the real block $Q$, recovering Theorems~\ref{thm:preperiod} and \ref{thm:orthogonal-period}. At a larger mark, several real appends may occur, but their complete ordered list is obtained by factoring one proper suffix of the period. The greedy construction is unchanged, and the suffix bounds the combined length of all appends.
+
+\begin{corollary}\label{cor:all-parent-tree}
+For every untwisted affine type and every alphabet order, orient the parent edge of each $i>1$ toward the index of $B_i$. The resulting graph is the finite Dynkin tree on the increasing simple roots $\beta_1,\ldots,\beta_n$, rooted at $1$.
+\end{corollary}
+\begin{proof}
+By Theorem~\ref{thm:uniform-phase}, the period parent is $M_1(\beta_i)$. Proposition~\ref{prop:all-connectivity} and \cite[Lemma~4.32]{ETC} identify it with the unique earlier Dynkin neighbor. As in Corollary~\ref{cor:parent-tree}, the $n-1$ parent edges exhaust the Dynkin tree.
+\end{proof}
+
+\begin{corollary}[Reconstruction from two imaginary degrees]\label{cor:two-degree-reconstruction}
+For a fixed untwisted affine root datum, the standard Lyndon words in degrees $\delta$ and $2\delta$ determine the positive system of increasing real-root chains. In particular, they determine whether every real-root chain is increasing or decreasing, and recover the finite Dynkin diagram with its bond multiplicities.
+\end{corollary}
+\begin{proof}
+Order both lists decreasingly. The first gives the standard factors $L_i,R_i$, which we cancel from the corresponding word in the second to recover $W_i$. Its Lyndon rotation gives $B_i$ and then the suffix $C_i$ in \eqref{eq:phase-split}. Theorem~\ref{thm:uniform-phase} recovers the increasing simple roots as $\beta_i=\Prj\deg(L_iC_i)$.
+
+By \cite[Section~4]{ETC}, the increasing finite roots are the positive roots of this simple system. Thus a real-root chain is increasing precisely when its finite projection has nonnegative coordinates in the $\beta_i$ basis. Corollary~\ref{cor:all-parent-tree} gives the parent edges, and the Cartan integers $2(\beta_i,\beta_j)/(\beta_i,\beta_i)$ give their bond multiplicities and orientations.
+\end{proof}
+
+\subsection{Uniform finite preprocessing}
+A general root-space recursion is slower than the explicit classical construction, but gives a single polynomial preprocessing algorithm for every untwisted type and every mark. We count rational arithmetic operations, not bit operations on the intermediate integers.
+
+\begin{theorem}\label{thm:uniform-algorithm}
+Given a finite irreducible root datum of rank $n$, a rational Chevalley bracket table, and an order on its affine simple-root alphabet, all factors $L_i,R_i,W_i$ and preperiods $y_i$ can be computed with $O(n^7)$ rational arithmetic operations and alphabet comparisons, using $O(n^5)$ storage locations. The retained factor table has size $O(n^2)$. Thereafter one word of degree $k\delta$ can be written in $O(kn)$ symbol-output steps, and a specified letter can be accessed without expanding the word.
+\end{theorem}
+\begin{proof}
+Apply the generalized Leclerc recursion in every positive root degree of height at most $2h$. The real roots in this range are
+\[
+ \gamma,\quad\gamma+\delta,\quad\delta-\gamma,\quad2\delta-\gamma
+ \qquad(\gamma\in\Phi^+),
+\]
+and the imaginary degrees are $\delta,2\delta$. Thus the number of retained basis words is
+\[
+ M=4|\Phi^+|+2n=O(n^2).
+\]
+Here $|\Phi|=O(n^2)$ and $h=O(n)$ follow from the classification, with absolute constants across all finite types and no dependence on the alphabet order.
+
+There are at most $M^2$ ordered pairs of retained words. In each degree we form the admitted concatenations, sort them decreasingly, and retain independent costandard brackets. A candidate has length at most $2h$. A longest-common-prefix table uses $O(h^2)$ space and supplies its substring comparisons. Testing each substring against its proper suffixes then determines all Lyndon substrings and costandard cuts in $O(h^3)$ comparisons.
+
+Evaluate a candidate's costandard bracket along its binary tree. Every intermediate value is zero, a scalar in a real root space, or an $n$-dimensional Cartan vector in an imaginary root space. Using the Chevalley table, $O(n^2)$ arithmetic operations suffice for each bracket, and there are $O(h)$ nodes. Thus each candidate costs $O(h^3+hn^2)=O(n^3)$ operations. Sorting and rational independence tests fit within the total $O(M^2n^3)=O(n^7)$ bound. The candidate words occupy $O(hM^2)=O(n^5)$ locations, which also accommodate the comparison tables and root-space vectors.
+
+Cancel in \eqref{eq:main} to recover $L_i,R_i,W_i$ from the first two imaginary degrees. Theorem~\ref{thm:main} makes these the factors in every degree, and Theorem~\ref{thm:uniform-phase} gives $y_i$ after taking the unique Lyndon rotation. The retained factors have total length $O(nh)=O(n^2)$. Expansion and direct access proceed as after Theorem~\ref{thm:algorithm}.
+\end{proof}
+
+The coefficient-two classical construction in Theorem~\ref{thm:algorithm} has the sharper bound $O(n^3\log n)$. Theorem~\ref{thm:uniform-algorithm} gives one finite construction for all untwisted types instead.
+
+\begin{corollary}\label{cor:imaginary-language}
+For a fixed untwisted affine type and alphabet order, the language of all imaginary standard Lyndon words is
+\[
+ \mathcal I=\bigcup_{i=1}^n L_iW_i^*R_i.
+\]
+The union is disjoint. It has an unambiguous finite automaton with $O(nh)$ states, and its noncommutative characteristic series is
+\[
+ \sum_{i=1}^n L_i(1-W_i)^{-1}R_i.
+\]
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:main} gives the language. If two such words agree, their lengths give the same imaginary degree, and distinct standard-basis indices then cannot agree. For each $i$, concatenate a path spelling $L_i$, a cycle spelling $W_i$, and a path spelling $R_i$. The union has $O(nh)$ states and is unambiguous by this disjointness. Expanding the geometric series gives the characteristic series. The state bound is for this unambiguous automaton, not for its determinization.
+\end{proof}
+
+\section{Symplectic weights and rectangle switches}\label{sec:weights}
+
+For type $C$, with $1\leq r<n$ and $s=n-r$, the block grid also has a weight-space interpretation. Let $E,F$ be symplectic spaces of dimensions $2r,2s$. Conjugation by $+1$ on $E$ and $-1$ on $F$ defines an involution of $\spalg(E\oplus F)$ with even part
+\[
+ \spalg(E)\oplus\spalg(F),
+\]
+while its odd part is identified, using the symplectic form on $F$, with
+\[
+ \operatorname{Hom}(F,E)\cong E\otimes F.
+\]
+The weights of this odd part are
+\[
+ \Omega_r=\{x+z:x\in\{\pm e_a:1\leq a\leq r\},
+                       \ z\in\{\pm e_b:r<b\leq n\}\}.
+\]
+These weights are the finite projections of the grid degrees. The involution records parity of the $\alpha_r$-coefficient, as in the classical graded-Lie-algebra construction \cite{Vin}. The greatest-shuffle words retain the order-dependent data that the weight-space description omits.
+
+\begin{proposition}\label{prop:zero-weight}
+For every $k\geq1$, a multiset of $2k$ grid blocks has total affine degree $k\delta$ if and only if the sum of its finite weights is zero.
+\end{proposition}
+\begin{proof}
+The forward implication uses $\Prj\delta=0$. Conversely, a zero-weight sum has degree $t\delta$ for an integer $t$, since the kernel of finite projection is $\Z\delta$. Each block has $\alpha_r$-coefficient one, so $2k=2t$ and $t=k$.
+\end{proof}
+
+Write a weight as $(x,z)$, with signed coordinates on the two sides of the cut, and record a multiset by its multiplicities $N_{x,z}$. It has zero weight precisely when the positive and negative multiplicities balance at every unsigned coordinate. A \emph{rectangle switch} exchanges the right coordinates of two occurrences,
+\begin{equation}\label{eq:rectangle}
+ (x,z),(x',z')\longmapsto(x,z'),(x',z).
+\end{equation}
+The switch preserves all signed row and column totals, and hence zero weight. Repeated coordinates and weights are allowed.
+
+\begin{theorem}\label{thm:switches}
+For every $k\geq1$, each zero-weight multiset of $2k$ weights in $\Omega_r$ can be transformed into $k$ antipodal pairs by at most $k-1$ rectangle switches. More precisely, choose a perfect matching $L$ pairing opposite left coordinates and a perfect matching $R$ pairing opposite right coordinates on the labeled occurrences. If $L\cup R$ has $c$ alternating components, then $k-c$ switches suffice. The bound $k-1$ is sharp when $r,s\geq k$.
+\end{theorem}
+\begin{proof}
+The zero-weight conditions give both matchings. Their union consists of alternating even cycles, including a two-edge cycle when a matching edge is common. Label a component on $2h$ vertices so that
+\[
+ L=\{v_1v_2,v_3v_4,\ldots,v_{2h-1}v_{2h}\},
+\]
+and
+\[
+ R=\{v_2v_3,v_4v_5,\ldots,v_{2h}v_1\}.
+\]
+For $h>1$, exchange the right coordinates at $v_2$ and $v_{2h}$. Replace the two affected right-matching edges by $v_1v_2$ and $v_{2h}v_3$, leaving the others unchanged. Now $v_1,v_2$ are antipodal in both coordinates, and the remaining vertices form an alternating cycle of length $2h-2$. Induction separates the component into $h$ antipodal pairs in $h-1$ switches. Summing over the $c$ components gives $k-c\leq k-1$.
+
+For sharpness, $k=1$ is immediate. If $k\geq2$, choose distinct left axes $e_1,\ldots,e_k$ and right axes $f_1,\ldots,f_k$, and take
+\[
+ (e_i,f_i),\quad(-e_i,-f_{i-1})
+ \qquad(1\leq i\leq k),\qquad f_0=f_k.
+\]
+Each signed coordinate occurs once, so the opposite-coordinate matchings are unique, both initially and after any switches. Their union begins as one alternating cycle and ends with $k$ components in an antipodally paired multiset. A switch conjugates the right matching by a transposition of two right labels. It leaves the matching unchanged if the two vertices are paired, and otherwise cuts and reconnects two edges. The component count can increase by at most one, so at least $k-1$ switches are required.
+\end{proof}
+
+\begin{corollary}\label{cor:four-weights}
+A multiset of four grid blocks of degree $2\delta$ either already consists of two antipodal pairs or can be changed into such a multiset by one rectangle switch.
+\end{corollary}
+
+The switches in Theorem~\ref{thm:switches} act on labeled occurrences and their multisets, not on Lyndon brackets. An insertion cut inside a block makes this distinction particularly important.
+
+
+\subsection{Zero-weight multisets in the orthogonal models}\label{subsec:orthogonal-switches}
+The symmetric-pair decomposition for orthogonal spaces $E,F$ has even part
+\[
+ \mathfrak{so}(E)\oplus\mathfrak{so}(F)
+\]
+and odd part $E\otimes F$. Taking $\dim E=2r$ and $\dim F=2s$ in type $D$, or $\dim F=2s+1$ in type $B$, gives exactly the weights $\Omega_D,\Omega_B$ of Proposition~\ref{prop:orthogonal-blocks}. If $s=0$ in type $B$, the one-dimensional $F$ contributes only its zero weight. This is the orthogonal version of the model in Section~\ref{sec:weights}.
+
+\begin{corollary}\label{cor:orthogonal-switches}
+In either orthogonal type, a multiset of $2k$ coefficient-one blocks has degree $k\delta$ precisely when its finite weights sum to zero. Every such multiset can be changed into $k$ antipodal pairs by at most $k-1$ rectangle switches. More precisely, opposite-coordinate matchings whose union has $c$ alternating components require at most $k-c$ switches. The bound $k-1$ is sharp when $r,s\geq k$.
+\end{corollary}
+\begin{proof}
+The degree assertion follows from finite projection and the $\alpha_r$-coefficient, as in Proposition~\ref{prop:zero-weight}. For type $D$, apply Theorem~\ref{thm:switches}. In type $B$, the nonzero signed right coordinates have balanced positive and negative multiplicities and hence even total multiplicity. The zero right coordinates therefore also occur an even number of times. Pair them with one another and apply the same alternating-cycle argument to obtain $k-c$ switches, allowing zero among the exchanged coordinates. The sharpness example from Theorem~\ref{thm:switches} uses no zero coordinates, so it applies to both types.
+\end{proof}
+
+\section{Pointed cuts and the limits of commutative straightening}\label{sec:cuts}
+
+To retain the phase of an insertion, we keep a cyclic list of grid-block words with their affine degrees, a linear basepoint, and a distinguished cut. The cut may lie inside a block or at its boundary. A change of basepoint transports the cut along this same cyclic list without replacing the words by weights.
+
+Write a complementary candidate as $UV=UPR$, with $Q$ complementary to $P$. Insertion takes place after $UP$. If the parent is $PQ$, the period at that cut is $QP$, as expressed, for every $t\geq0$, by
+\begin{equation}\label{eq:cut-identity}
+ LQ(PQ)^tP=L(QP)^{t+1}.
+\end{equation}
+If the parent is already $QP$, no initial $Q$ is needed. Equation~\eqref{eq:cut-identity} is an identity of concatenations only: it does not assert that a rotation is Lyndon or that different internal cuts give the same bracket.
+
+\subsection{A rectangle need not preserve a Cartan direction}
+Already in type $C_2^{(1)}$, the two complementary pairs give independent imaginary directions. Under $1<0<2$, their words are $1012$ and $1120$, and their brackets have directions
+\[
+ \br{1012}\in\Q^{\times}H_{e_1+e_2}t,
+ \qquad
+ \br{1120}\in\Q^{\times}H_{e_1-e_2}t.
+\]
+Thus even up to a nonzero scalar, the two brackets are not identified by the commutative rectangle relation on their weights.
+
+\subsection{The internal prefix cut changes the bracket}
+Let $a=E_1$, $b=E_0$, and $c=E_2$ in the same example. The costandard bracketing and the Jacobi identity give
+\begin{align}
+ \br{1120}
+ &=[a,[[a,c],b]]\notag\\
+ &=[[a,[a,c]],b]+[[a,c],[a,b]]\notag\\
+ &=[\br{112},E_0]-\br{1012}.
+ \label{eq:ranktwo-cut}
+\end{align}
+Cutting after the longest proper Lyndon prefix $112$ gives direction $2H_{e_1}t$. Subtracting the earlier direction $H_{e_1+e_2}t$ leaves $H_{e_1-e_2}t$. This correction is visible in the imaginary flag but not in the unbased block multiset.
+
+\subsection{The order-dependent conclusion}
+A Gr\"obner--Shirshov presentation would require ordered relations and verification of their compositions; rectangle switches do not provide these. The result in Section~\ref{subsec:filtered} instead identifies the greatest word with nonzero class in the prescribed flag quotient: the pointed degree-$2\delta$ word survives, and every greater Lyndon word has zero class.
+
+\section{Further directions}\label{sec:directions}
+
+The untwisted periodicity and connectivity theorems use the previously verified computer-assisted exceptional cases. It remains of interest to replace those finite verifications by a type-independent analytic argument. The phase proof in Theorem~\ref{thm:uniform-phase} does not do this, since it begins with the insertion formula already established.
+
+For twisted types, the imaginary multiplicities and the Cartan spaces used in the greedy selection can vary with the degree, so the same degree-$\delta$ indexing cannot apply to every family. The companion note proves finite blocks at every affine Kac mark, nonzero bracketing of primitive zero-weight configurations, and the insertion formula in $A_2^{(2)}$ for both orders. Its divisibility-stratified extension to the other twisted families remains conjectural and is not supplied by untwisted propagation.
+
+A quantum version would require compatible leading-term and triangularity results in addition to the classical bracket calculation. The constructions in \cite{HT} give a setting for that question, which we do not treat here. A full Gr\"obner--Shirshov presentation would likewise have to retain the pointed cut and verify critical compositions, rather than use commutative rectangle switches as bracket identities.
+
+\section*{Author Contributions}
+Author order reflects relative contribution. Pranava and Abhijay developed the mathematical theory, executed the proofs, and drafted the manuscript; Manolis Kellis provided computational resources and supervised the project. All authors reviewed the final manuscript.
+
+\section*{Declarations}
+The authors received no funding for this work and declare no competing interests.
+
+The supplementary Python programs implement the chain-and-fork construction and exact Lie brackets, and check finite cases of the periods, factors, parents, primitive lattices, and rectangle switches. The classical and phase proofs do not use these checks. The exceptional cases of Theorem~\ref{thm:main} and Proposition~\ref{prop:all-connectivity} rely on the separately cited computer-assisted results of Elkins and Tsymbaliuk.
+
+\begin{thebibliography}{10}
+
+\bibitem{ACH}
+F.~Ardila, F.~Castillo, and M.~Henley,
+\emph{The arithmetic Tutte polynomials of the classical root systems},
+International Mathematics Research Notices \textbf{2015} (2015), no.~12, 3830--3877.
+
+\bibitem{AT}
+Y.~Avdieiev and A.~Tsymbaliuk,
+\emph{Affine standard Lyndon words: A-type},
+International Mathematics Research Notices \textbf{2024} (2024), no.~21, 13488--13524.
+
+\bibitem{ET}
+C.~Elkins and A.~Tsymbaliuk,
+\emph{Affine standard Lyndon words},
+arXiv:2505.15432, author-hosted revision of June~19, 2025, 47~pp.
+\url{https://www.math.purdue.edu/~otsymbal/Papers/AffineSL.pdf}.
+
+\bibitem{ETC}
+C.~Elkins and A.~Tsymbaliuk,
+\emph{Chains of affine standard Lyndon words},
+arXiv:2605.15027, author-hosted revision of August~15, 2026, 65~pp.
+\url{https://www.math.purdue.edu/~otsymbal/Papers/SL-chains.pdf}.
+
+\bibitem{HT}
+Y.~Hu and A.~Tsymbaliuk,
+\emph{Shuffle algebras and their integral forms: specialization map approach in types $C_n$ and $D_n$},
+Journal of Algebra \textbf{690} (2026), 475--546.
+
+\bibitem{LR}
+P.~Lalonde and A.~Ram,
+\emph{Standard Lyndon bases of Lie algebras and enveloping algebras},
+Transactions of the American Mathematical Society \textbf{347} (1995), no.~5, 1821--1830.
+
+\bibitem{Le}
+B.~Leclerc,
+\emph{Dual canonical bases, quantum shuffles and $q$-characters},
+Mathematische Zeitschrift \textbf{246} (2004), 691--732.
+
+\bibitem{Vin}
+E.~B.~Vinberg,
+\emph{The Weyl group of a graded Lie algebra},
+Mathematics of the USSR-Izvestiya \textbf{10} (1976), 463--495.
+
+\bibitem{Zas}
+T.~Zaslavsky,
+\emph{The geometry of root systems and signed graphs},
+The American Mathematical Monthly \textbf{88} (1981), no.~2, 88--105.
+
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,555 @@
+[
+  {
+    "type": "Aeven",
+    "n": 1,
+    "K": 6,
+    "delta": [
+      1,
+      2
+    ],
+    "cartan": [
+      [
+        2,
+        -1
+      ],
+      [
+        -4,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 18,
+    "total_homogeneous_spaces": 24,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "Aeven",
+    "n": 2,
+    "K": 6,
+    "delta": [
+      1,
+      2,
+      2
+    ],
+    "cartan": [
+      [
+        2,
+        -1,
+        0
+      ],
+      [
+        -2,
+        2,
+        -1
+      ],
+      [
+        0,
+        -2,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 60,
+    "total_homogeneous_spaces": 66,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "Aeven",
+    "n": 3,
+    "K": 6,
+    "delta": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "cartan": [
+      [
+        2,
+        -1,
+        0,
+        0
+      ],
+      [
+        -2,
+        2,
+        -1,
+        0
+      ],
+      [
+        0,
+        -1,
+        2,
+        -1
+      ],
+      [
+        0,
+        0,
+        -2,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 126,
+    "total_homogeneous_spaces": 132,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "Aodd",
+    "n": 2,
+    "K": 6,
+    "delta": [
+      1,
+      1,
+      1
+    ],
+    "cartan": [
+      [
+        2,
+        0,
+        -2
+      ],
+      [
+        0,
+        2,
+        -2
+      ],
+      [
+        -1,
+        -1,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 36,
+    "total_homogeneous_spaces": 42,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "Aodd",
+    "n": 3,
+    "K": 6,
+    "delta": [
+      1,
+      1,
+      2,
+      1
+    ],
+    "cartan": [
+      [
+        2,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        2,
+        -1,
+        0
+      ],
+      [
+        -1,
+        -1,
+        2,
+        -2
+      ],
+      [
+        0,
+        0,
+        -1,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 90,
+    "total_homogeneous_spaces": 96,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "Dtw",
+    "n": 3,
+    "K": 6,
+    "delta": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "cartan": [
+      [
+        2,
+        -2,
+        0,
+        0
+      ],
+      [
+        -1,
+        2,
+        -1,
+        0
+      ],
+      [
+        0,
+        -1,
+        2,
+        -1
+      ],
+      [
+        0,
+        0,
+        -2,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 72,
+    "total_homogeneous_spaces": 78,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "E6tw",
+    "n": 4,
+    "K": 6,
+    "delta": [
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "cartan": [
+      [
+        2,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        2,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        2,
+        -2,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        2,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 216,
+    "total_homogeneous_spaces": 222,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "D4tw",
+    "n": 2,
+    "K": 9,
+    "delta": [
+      1,
+      2,
+      1
+    ],
+    "cartan": [
+      [
+        2,
+        -1,
+        0
+      ],
+      [
+        -1,
+        2,
+        -3
+      ],
+      [
+        0,
+        -1,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 72,
+    "total_homogeneous_spaces": 81,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "G2",
+    "n": 2,
+    "K": 3,
+    "delta": [
+      1,
+      3,
+      2
+    ],
+    "cartan": [
+      [
+        2,
+        0,
+        -1
+      ],
+      [
+        0,
+        2,
+        -3
+      ],
+      [
+        -1,
+        -1,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 36,
+    "total_homogeneous_spaces": 39,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "F4",
+    "n": 4,
+    "K": 3,
+    "delta": [
+      1,
+      2,
+      4,
+      3,
+      2
+    ],
+    "cartan": [
+      [
+        2,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        2,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        2,
+        -2,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        2,
+        -1
+      ],
+      [
+        -1,
+        0,
+        0,
+        -1,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 144,
+    "total_homogeneous_spaces": 147,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "E",
+    "n": 6,
+    "K": 3,
+    "delta": [
+      1,
+      1,
+      2,
+      2,
+      3,
+      2,
+      1
+    ],
+    "cartan": [
+      [
+        2,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        2,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        2,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        -1,
+        2,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        2,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 216,
+    "total_homogeneous_spaces": 219,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "type": "E",
+    "n": 7,
+    "K": 3,
+    "delta": [
+      1,
+      2,
+      2,
+      3,
+      4,
+      3,
+      2,
+      1
+    ],
+    "cartan": [
+      [
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        2,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        2,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        -1,
+        2,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        2,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        2,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        2
+      ]
+    ],
+    "positive_real_roots_in_box": 378,
+    "total_homogeneous_spaces": 381,
+    "serre_and_root_dimensions": "passed"
+  },
+  {
+    "algebra": "D4",
+    "basis_triples": 21952,
+    "jacobi": "passed"
+  }
+]
